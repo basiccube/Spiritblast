@@ -30,12 +30,13 @@ void Print(const char* str)
 	g_interface->CallBuiltin("show_debug_message", {RValue(str)});
 }
 
+#define GM_C_WHITE RValue(16777215)
+#define GM_C_BLACK RValue(0)
+
+#define GM_INVALID -1
+
 void DrawDebugCollisionDataBG()
 {
-	// Override depth so that it doesn't draw in front of everything
-	//RValue prevDepth = g_interface->CallBuiltin("gpu_get_depth", {});
-	//g_interface->CallBuiltin("gpu_set_depth", {RValue(2500)});
-
 	RValue camID = RValue();
 	g_interface->GetBuiltin("view_camera", nullptr, 0, camID);
 
@@ -44,10 +45,16 @@ void DrawDebugCollisionDataBG()
 	for (int i = 0; i < g_debugCollisionDataBG.size(); i++)
 	{
 		SpriteData &data = g_debugCollisionDataBG[i];
-		g_interface->CallBuiltin("draw_sprite_ext", {data.sprite, RValue(0), RValue(data.x.ToInt32() + 25 + (camX.ToInt32() * 0.5)), data.y, data.xscale, data.yscale, data.angle, RValue(16777215), RValue(1)});
+		g_interface->CallBuiltin("draw_sprite_ext", {data.sprite,
+													RValue(0),
+													RValue(data.x.ToInt32() + 25 + (camX.ToInt32() * 0.5)),
+													data.y,
+													data.xscale,
+													data.yscale,
+													data.angle,
+													GM_C_WHITE,
+													RValue(1)});
 	}
-
-	//g_interface->CallBuiltin("gpu_set_depth", {prevDepth});
 }
 
 void DrawDebugCollisionData()
@@ -55,7 +62,15 @@ void DrawDebugCollisionData()
 	for (int i = 0; i < g_debugCollisionData.size(); i++)
 	{
 		SpriteData &data = g_debugCollisionData[i];
-		g_interface->CallBuiltin("draw_sprite_ext", {data.sprite, RValue(0), data.x, data.y, data.xscale, data.yscale, data.angle, RValue(16777215), RValue(1)});
+		g_interface->CallBuiltin("draw_sprite_ext", {data.sprite,
+													RValue(0),
+													data.x,
+													data.y,
+													data.xscale,
+													data.yscale,
+													data.angle,
+													GM_C_WHITE,
+													RValue(1)});
 	}
 }
 
@@ -67,6 +82,9 @@ void GetDebugCollisionData(const char* name, int gameplayLayer = 0)
 	for (int i = 0; i < instNum.ToInt32(); i++)
 	{
 		RValue inst = g_interface->CallBuiltin("instance_find", {obj, RValue(i)});
+		if (inst.IsUndefined())
+			continue;
+
 		RValue obj = g_interface->CallBuiltin("variable_instance_get", {inst, RValue("object_index")});
 		RValue objname = g_interface->CallBuiltin("object_get_name", {obj});
 		RValue layer = g_interface->CallBuiltin("variable_instance_get", {inst, RValue("gameplayLayer")});
@@ -106,10 +124,10 @@ RValue GetInstance(string name)
 	for (int i = 0; i < instNum.ToInt32(); i++)
 	{
 		RValue inst = g_interface->CallBuiltin("instance_find", {obj, RValue(i)});
-		if (inst.ToInt32() != -4)
+		if (!inst.IsUndefined())
 			return inst;
 	}
-
+	
 	return RValue();
 }
 
@@ -133,18 +151,18 @@ void DumpPlayerVariables()
 {
 	Print("Dumping player variables...");
 
-	RValue obj = g_interface->CallBuiltin("asset_get_index", {RValue("ob_player")});
-	RValue instNum = g_interface->CallBuiltin("instance_number", {obj});
-
-	for (int i = 0; i < instNum.ToInt32(); i++)
+	RValue inst = GetInstance("ob_player");
+	if (inst.IsUndefined())
 	{
-		RValue inst = g_interface->CallBuiltin("instance_find", {obj, RValue(i)});
-		RValue arr = g_interface->CallBuiltin("variable_instance_get_names", {inst});
+		Print("No player instance found");
+		return;
+	}	
+	
+	RValue arr = g_interface->CallBuiltin("variable_instance_get_names", {inst});
 
-		vector<RValue> nameArr = arr.ToVector();
-		for (int j = 0; j < nameArr.size(); j++)
-			g_interface->CallBuiltin("show_debug_message", {nameArr[j]});
-	}
+	vector<RValue> nameArr = arr.ToVector();
+	for (int j = 0; j < nameArr.size(); j++)
+		g_interface->CallBuiltin("show_debug_message", {nameArr[j]});
 }
 
 json roomData;
@@ -180,7 +198,7 @@ void GoToCustomLevelRoom()
 	if (roomData != nullptr)
 	{
 		RValue templateRoom = g_interface->CallBuiltin("asset_get_index", {RValue("rm_template_room")});
-		if (templateRoom.ToInt32() != -1)
+		if (templateRoom.ToInt32() != GM_INVALID)
 		{
 			Print("Preparing room");
 			int width = roomData["roomInfo"]["width"];
@@ -188,9 +206,6 @@ void GoToCustomLevelRoom()
 
 			g_interface->CallBuiltin("room_set_width", {templateRoom, RValue(width)});
 			g_interface->CallBuiltin("room_set_height", {templateRoom, RValue(height)});
-
-			RValue spawnManagerObject = g_interface->CallBuiltin("asset_get_index", {RValue("ob_spawnManager")});
-			g_interface->CallBuiltin("instance_create", {spawnManagerObject});
 
 			Print("Go to template room");
 			g_interface->CallBuiltin("room_goto", {templateRoom});
@@ -201,11 +216,20 @@ void GoToCustomLevelRoom()
 void ChangeMainMenuPage(string name)
 {
 	RValue menuInst = GetInstance("ob_listMenu");
+	if (menuInst.IsUndefined())
+	{
+		Print("Not in a menu!");
+		return;
+	}
+
 	RValue changePageFunc = g_interface->CallBuiltin("variable_instance_get", {menuInst, RValue("changePage")});
 
 	RValue pageValue = g_interface->CallBuiltin("variable_instance_get", {menuInst, RValue(name)});
-	if (pageValue.ToInt32() == -1)
+	if (pageValue.IsUndefined())
+	{
+		Print("Invalid page name!");
 		return;
+	}
 
 	vector<RValue> argArray = {pageValue};
 	RValue funcArgs = RValue(argArray);
@@ -308,7 +332,7 @@ void EventCallback(FWCodeEvent &eventCtx)
 								int oyscale = obj["yscale"];
 
 								RValue oasset = g_interface->CallBuiltin("asset_get_index", {RValue(oid)});
-								if (oasset.ToInt32() == -1)
+								if (oasset.ToInt32() == GM_INVALID)
 									continue;
 
 								RValue oinst = g_interface->CallBuiltin("instance_create_layer", {RValue(ox), RValue(oy), RValue("InstancesFG"), oasset});
@@ -368,21 +392,7 @@ void EventCallback(FWCodeEvent &eventCtx)
 	}
 }
 
-EXPORTED AurieStatus ModulePreinitialize(
-	IN AurieModule* Module,
-	IN const fs::path& ModulePath
-)
-{
-	UNREFERENCED_PARAMETER(Module);
-	UNREFERENCED_PARAMETER(ModulePath);
-
-	return AURIE_SUCCESS;
-}
-
-EXPORTED AurieStatus ModuleInitialize(
-	IN AurieModule* Module,
-	IN const fs::path& ModulePath
-)
+EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path& ModulePath)
 {
 	UNREFERENCED_PARAMETER(ModulePath);
 
@@ -404,17 +414,6 @@ EXPORTED AurieStatus ModuleInitialize(
 	g_interface->CallBuiltin("show_debug_overlay", {RValue(true)});
 	g_interface->CallBuiltin("variable_global_set", {RValue("debug"), RValue(true)});
 	g_interface->CallBuiltin("variable_global_set", {RValue("debug_visible"), RValue(true)});
-
-	return AURIE_SUCCESS;
-}
-
-EXPORTED AurieStatus ModuleUnload(
-	IN AurieModule* Module,
-	IN const fs::path& ModulePath
-)
-{
-	UNREFERENCED_PARAMETER(Module);
-	UNREFERENCED_PARAMETER(ModulePath);
 
 	return AURIE_SUCCESS;
 }
