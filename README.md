@@ -35,12 +35,15 @@ Again, make sure it's from the "v5 open-beta, build A" release.
 * Copy AurieCore.dll into the `mods/Native` folder
 * Copy YYToolkit.dll into the `mods/Aurie` folder
 * Patch the game exe using AuriePatcher  
-You can do it either from the command line or just launch the patcher and it'll show some dialog boxes that do the same thing.
+You can do it either from the command line or just launch the patcher and it'll show some dialog boxes that do the same thing.  
+If you're using the patcher the non-command line way, it should first show that you have to select the game exe, then afterwards you'd have to select the AurieCore.dll file you put in the `mods/Native` folder.  
+Once you've done that, pressing the `Install` button should patch the game.
 * Download AB-Mod.dll from the releases page [here](https://github.com/basiccube/AB-Mod/releases)
 * Copy AB-Mod.dll into the `mods/Aurie` folder
 * You should be ready to launch the game now!
 
-If everything was done correctly, you should see the debug overlay when the game opens.
+If everything was done correctly, you should see the debug overlay when the game opens.  
+If the game at any point gets an update, then the exe will almost certainly become unpatched. Simply rerun AuriePatcher and it should work again.
 
 ## Build
 
