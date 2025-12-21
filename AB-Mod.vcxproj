@@ -143,13 +143,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\YYToolkit\YYTK_Shared_Types.cpp" />
-    <ClCompile Include="source\ModuleMain.cpp" />
+    <ClCompile Include="source\Menus.cpp" />
+    <ClCompile Include="source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Aurie\shared.hpp" />
     <ClInclude Include="include\FunctionWrapper\FunctionWrapper.hpp" />
     <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\main.h" />
+    <ClInclude Include="include\Menus.h" />
     <ClInclude Include="include\YYToolkit\YYTK_Shared.hpp" />
     <ClInclude Include="include\YYToolkit\YYTK_Shared_Base.hpp" />
     <ClInclude Include="include\YYToolkit\YYTK_Shared_Interface.hpp" />

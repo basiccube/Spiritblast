@@ -1,4 +1,5 @@
 #include "main.h"
+#include "Menus.h"
 
 #include <fstream>
 #include <json.hpp>
@@ -22,9 +23,9 @@ vector<SpriteData> g_debugCollisionData;
 vector<SpriteData> g_debugCollisionDataBG;
 static bool g_showDebugCollision = false;
 
-void Print(string str)
+void Print(RValue str)
 {
-	g_interface->CallBuiltin("show_debug_message", {RValue(str)});
+	g_interface->CallBuiltin("show_debug_message", {str});
 }
 
 void DrawDebugCollisionDataBG()
@@ -141,12 +142,12 @@ void DumpGlobalVariables()
 
 void DumpObjectVariables(string name)
 {
-	Print("Dumping object variables: " + name);
+	Print(RValue("Dumping object variables: " + name));
 
 	RValue inst = GetInstance(name);
 	if (inst.IsUndefined())
 	{
-		Print("No instance found for object " + name);
+		Print(RValue("No instance found for object " + name));
 		return;
 	}	
 	
@@ -207,140 +208,6 @@ void GoToCustomLevelRoom()
 
 static bool g_createdDebugMenu = false;
 static bool g_createdCustomOptions = false;
-
-// Changes the current page in the menu.
-// NOTE: addToHistory is meant to be used as a boolean if specified.
-void ChangeMenuPage(RValue menu, string name, int addToHistory = -1)
-{
-	RValue changePage = g_interface->CallBuiltin("variable_instance_get", {menu, RValue("changePage")});
-	if (changePage.IsUndefined())
-		return;
-
-	RValue pageValue = g_interface->CallBuiltin("variable_instance_get", {menu, RValue(name)});
-	if (pageValue.IsUndefined())
-	{
-		Print("Invalid page name!");
-		return;
-	}
-
-	vector<RValue> argArray = {pageValue};
-	if (addToHistory != -1)
-		argArray.push_back(addToHistory);
-
-	RValue funcArgs = RValue(argArray);
-	g_interface->CallBuiltin("method_call", {changePage, funcArgs});
-}
-
-// Creates a menu page.
-RValue CreateMenuPage(RValue menu)
-{
-	RValue pageCreate = g_interface->CallBuiltin("variable_instance_get", {menu, "pageCreate"});
-	if (pageCreate.IsUndefined())
-		return RValue();
-
-	RValue newPage = g_interface->CallBuiltin("method_call", {pageCreate});
-	return newPage;
-}
-
-// Adds a menu item to the page stored in an RValue.
-void AddItemToPageValue(RValue menu, RValue page, CInstance *item, int index = -1)
-{
-	if (index != -1)
-		g_interface->CallBuiltin("ds_list_insert", {page, index, item});
-	else
-		g_interface->CallBuiltin("ds_list_add", {page, item});
-}
-
-// Adds a menu item to a page.
-void AddItemToPage(RValue menu, string page, CInstance *item, int index = -1)
-{
-	RValue pageVar = g_interface->CallBuiltin("variable_instance_get", {menu, RValue(page)});
-	if (pageVar.IsUndefined())
-	{
-		Print("Invalid page specified: " + page);
-		return;
-	}
-	
-	AddItemToPageValue(menu, pageVar, item, index);
-}
-
-RValue CreateFakeMenuInstance(RValue menu)
-{
-	RValue defaultFont = g_interface->CallBuiltin("variable_instance_get", {menu, "defaultFont"});
-
-	// Create a fake struct consisting of the variables required
-	// by the menu button since menu.ToInstance() doesn't fucking work
-	map<string, RValue> fakeMenuInstanceMap;
-	fakeMenuInstanceMap["id"] = menu;
-	fakeMenuInstanceMap["defaultFont"] = defaultFont;
-	RValue fakeMenuInstance = RValue(fakeMenuInstanceMap);
-
-	return fakeMenuInstance;
-}
-
-// Creates a menu button.
-CInstance *CreateMenuButton(RValue menu, string text, RValue buttonMethod, RValue params = RValue())
-{
-	RValue menuButton = g_interface->CallBuiltin("asset_get_index", {"menuButton"});
-	if (menuButton.ToInt32() == GM_INVALID)
-		return nullptr;
-
-	RValue fakeMenuInstance = CreateFakeMenuInstance(menu);
-
-	map<string, RValue> itemMap;
-	RValue item = RValue(itemMap);
-
-	CInstance *itemInst = item.ToInstance();
-	CInstance *menuInst = fakeMenuInstance.ToInstance();
-
-	RValue res = RValue();
-	g_interface->CallBuiltinEx(res, "script_execute", itemInst, menuInst, {menuButton, RValue(text), buttonMethod, params});
-
-	return itemInst;
-}
-
-// Creates a menu on/off toggle.
-CInstance *CreateMenuToggle(RValue menu, string text, RValue value, RValue object, RValue varName)
-{
-	RValue menuToggle = g_interface->CallBuiltin("asset_get_index", {"menuToggle"});
-	if (menuToggle.ToInt32() == GM_INVALID)
-		return nullptr;
-
-	RValue fakeMenuInstance = CreateFakeMenuInstance(menu);
-
-	map<string, RValue> itemMap;
-	RValue item = RValue(itemMap);
-
-	CInstance *itemInst = item.ToInstance();
-	CInstance *menuInst = fakeMenuInstance.ToInstance();
-
-	RValue res = RValue();
-	g_interface->CallBuiltinEx(res, "script_execute", itemInst, menuInst, {menuToggle, RValue(text), value, object, varName});
-
-	return itemInst;
-}
-
-// Creates a menu button that goes to the specified page.
-CInstance *CreateChangePageButton(RValue menu, string text, RValue targetPage)
-{
-	RValue changePage = g_interface->CallBuiltin("variable_instance_get", {menu, "changePage"});
-	if (changePage.IsUndefined())
-		return nullptr;
-
-	CInstance *btn = CreateMenuButton(menu, text, changePage, targetPage);
-	return btn;
-}
-
-// Creates a menu button that goes back to the previous page.
-CInstance *CreateBackButton(RValue menu, string text)
-{
-	RValue popPage = g_interface->CallBuiltin("variable_instance_get", {menu, "popPage"});
-	if (popPage.IsUndefined())
-		return nullptr;
-
-	CInstance *backBtn = CreateMenuButton(menu, text, popPage);
-	return backBtn;
-}
 
 static bool g_debugControls = false;
 static bool g_skipSplash = false;

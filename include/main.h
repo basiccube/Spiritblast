@@ -17,3 +17,5 @@ extern YYTKInterface *g_interface;
 #define GM_INVALID -1
 
 #define MOD_SETTINGS_FILE "antonblast_ab-mod_settings.ini"
+
+void Print(RValue str);
