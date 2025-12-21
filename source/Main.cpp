@@ -1,11 +1,7 @@
 #include "main.h"
+#include "IniFile.h"
 #include "Menus.h"
-
-#include <fstream>
-#include <json.hpp>
-using json = nlohmann::json;
-
-// Everything right now is just dumped in here in this one file
+#include "RoomLoader.h"
 
 YYTKInterface *g_interface = nullptr;
 
@@ -158,54 +154,6 @@ void DumpObjectVariables(string name)
 		g_interface->CallBuiltin("show_debug_message", {nameArr[j]});
 }
 
-json roomData;
-
-json LoadRoomData(string path)
-{
-	ifstream file(path);
-	if (file.fail())
-	{
-		Print("Failed to load room data");
-		return nullptr;
-	}
-
-	json data;
-	try
-	{
-		data = json::parse(file, nullptr, true, true);
-	}
-	catch (const json::parse_error &e)
-	{
-		Print("Failed to parse json file!");
-		g_interface->CallBuiltin("show_debug_message", {RValue(e.what())});
-		return nullptr;
-	}
-
-	file.close();
-	return data;
-}
-
-void GoToCustomLevelRoom()
-{
-	roomData = LoadRoomData("testrm.json");
-	if (roomData != nullptr)
-	{
-		RValue templateRoom = g_interface->CallBuiltin("asset_get_index", {RValue("rm_template_room")});
-		if (templateRoom.ToInt32() != GM_INVALID)
-		{
-			Print("Preparing room");
-			int width = roomData["roomInfo"]["width"];
-			int height = roomData["roomInfo"]["height"];
-
-			g_interface->CallBuiltin("room_set_width", {templateRoom, RValue(width)});
-			g_interface->CallBuiltin("room_set_height", {templateRoom, RValue(height)});
-
-			Print("Go to template room");
-			g_interface->CallBuiltin("room_goto", {templateRoom});
-		}
-	}
-}
-
 static bool g_createdDebugMenu = false;
 static bool g_createdCustomOptions = false;
 
@@ -272,7 +220,7 @@ void FrameCallback(FWFrame &frameCtx)
 
 	RValue gotoTemplateRoom = g_interface->CallBuiltin("keyboard_check_pressed", {RValue(VK_F3)});
 	if (gotoTemplateRoom.ToBoolean())
-		GoToCustomLevelRoom();
+		GoToRoomLoaderRoom();
 
 	bool prevDebugCollision = g_showDebugCollision;
 	RValue colKeyPress = g_interface->CallBuiltin("keyboard_check_pressed", {RValue(VK_F4)});
@@ -385,7 +333,7 @@ void EventCallback(FWCodeEvent &eventCtx)
 								g_interface->CallBuiltin("instance_create_depth", {RValue(32), RValue(32), RValue(0), playerObject});
 							}
 
-							vector<json> objectData = roomData["objects"];
+							vector<json> objectData = g_roomData["objects"];
 							for (int i = 0; i < objectData.size(); i++)
 							{
 								json obj = objectData[i];
@@ -544,24 +492,20 @@ void EventCallback(FWCodeEvent &eventCtx)
 				g_createdCustomOptions = false;
 
 				// Write any custom settings to the ini file
-				g_interface->CallBuiltin("ini_open", {MOD_SETTINGS_FILE});
+				IniOpen(MOD_SETTINGS_FILE);
 
-				RValue bfullscreenValue = g_interface->CallBuiltin("variable_global_get", {"borderless_fullscreen"});
-				g_interface->CallBuiltin("ini_write_real", {"Video", "BorderlessFullscreen", bfullscreenValue});
+				GetGlobalAndWriteToIni({"Video", "BorderlessFullscreen"}, "borderless_fullscreen");
 
-				RValue debugOverlayValue = g_interface->CallBuiltin("variable_global_get", {"debug_overlay"});
-				g_interface->CallBuiltin("ini_write_real", {"Debug", "DebugOverlay", debugOverlayValue});
+				RValue debugOverlayValue = GetGlobalAndWriteToIni({"Debug", "DebugOverlay"}, "debug_overlay");
 				g_interface->CallBuiltin("show_debug_overlay", {debugOverlayValue});
 
-				RValue debugControlsValue = g_interface->CallBuiltin("variable_global_get", {"debug_controls"});
-				g_interface->CallBuiltin("ini_write_real", {"Debug", "DebugControls", debugControlsValue});
+				RValue debugControlsValue = GetGlobalAndWriteToIni({"Debug", "DebugControls"}, "debug_controls");
 				g_debugControls = debugControlsValue.ToBoolean();
 
-				RValue skipSplashValue = g_interface->CallBuiltin("variable_global_get", {"skip_splash"});
-				g_interface->CallBuiltin("ini_write_real", {"Debug", "SkipSplash", skipSplashValue});
+				RValue skipSplashValue = GetGlobalAndWriteToIni({"Debug", "SkipSplash"}, "skip_splash");
 				g_skipSplash = skipSplashValue.ToBoolean();
 
-				g_interface->CallBuiltin("ini_close", {});
+				IniClose();
 			}
 			break;
 	}
@@ -591,31 +535,26 @@ EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path&
 	//g_interface->CallBuiltin("variable_global_set", {RValue("debug"), RValue(true)});
 	//g_interface->CallBuiltin("variable_global_set", {RValue("debug_visible"), RValue(true)});
 
-	// This is where any custom settings will be read.
-	// I know the game uses JSON for its settings, but this is a lot quicker and simpler to do.
-	g_interface->CallBuiltin("ini_open", {MOD_SETTINGS_FILE});
+	// Read all custom settings from the settings INI.
+	IniOpen(MOD_SETTINGS_FILE);
 
 	// Borderless fullscreen
-	RValue bfullscreenValue = g_interface->CallBuiltin("ini_read_real", {"Video", "BorderlessFullscreen", false});
-	g_interface->CallBuiltin("variable_global_set", {"borderless_fullscreen", bfullscreenValue});
+	RValue bfullscreenValue = ReadAndSetGlobalFromIni({"Video", "BorderlessFullscreen", false}, "borderless_fullscreen");
 	g_interface->CallBuiltin("window_enable_borderless_fullscreen", {bfullscreenValue});
 
 	// Debug overlay
-	RValue debugOverlayValue = g_interface->CallBuiltin("ini_read_real", {"Debug", "DebugOverlay", false});
-	g_interface->CallBuiltin("variable_global_set", {"debug_overlay", debugOverlayValue});
+	RValue debugOverlayValue = ReadAndSetGlobalFromIni({"Debug", "DebugOverlay", false}, "debug_overlay");
 	g_interface->CallBuiltin("show_debug_overlay", {debugOverlayValue});
 
 	// Debug controls
-	RValue debugControlsValue = g_interface->CallBuiltin("ini_read_real", {"Debug", "DebugControls", false});
-	g_interface->CallBuiltin("variable_global_set", {"debug_controls", debugControlsValue});
+	RValue debugControlsValue = ReadAndSetGlobalFromIni({"Debug", "DebugControls", false}, "debug_controls");
 	g_debugControls = debugControlsValue.ToBoolean();
 
 	// Skip splash screens
-	RValue skipSplashValue = g_interface->CallBuiltin("ini_read_real", {"Debug", "SkipSplash", false});
-	g_interface->CallBuiltin("variable_global_set", {"skip_splash", skipSplashValue});
+	RValue skipSplashValue = ReadAndSetGlobalFromIni({"Debug", "SkipSplash", false}, "skip_splash");
 	g_skipSplash = skipSplashValue.ToBoolean();
 
-	g_interface->CallBuiltin("ini_close", {});
+	IniClose();
 
 	// Hook into environment_get_username to override the options menu header later
 	// I'm pretty certain this function is not used in the game at all so hooking into it is fine
