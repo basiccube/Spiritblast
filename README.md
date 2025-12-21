@@ -8,47 +8,54 @@ Currently features the following:
 * Custom room loading functionality (WIP)
 
 There are a few keys that have been added that do some sort of action:
-* F1 - Dump global variable names to the console
-* F2 - Dump player variable names to the console
-* F3 - Load custom room from testrm.json
-* F4 - Toggle debug collision visibility
-* F5 - Change current page in menu
+* **F1** - Dump global variable names to the console
+* **F2** - Dump specified object variable names to the console
+* **F3** - Load custom room from testrm.json
+* **F4** - Toggle debug collision visibility
+* **F5** - Change current page in menu
 
-The mod in its current state is not finished and is still a work in progress.  
+To be able to use these keys, you need to first enable them within the new "Debug" page in the options menu.
+
+**The mod in its current state is not finished and is still a work in progress.**  
 Room loading functionality will have more details when it is in a more usable form.
 
 ## Install
 
-The installation process is a bit complicated, but there's nothing I can do about that, especially since this is all relying on, at the time of writing this, still WIP tools.
+The installation process is a bit complicated, and there's nothing I can do about that, especially since this is all relying on, at the time of writing this, still WIP tools.  
+Make sure to read the installation steps thoroughly, as not doing any of these steps properly will more than likely make the mod not work!
 
-* Create the following directory structure as seen below where ANTONBLAST is installed:
+* **Create the following directory structure as seen below where ANTONBLAST is installed:**
 ```
 ├─── ANTONBLAST.exe
 └─── mods
     ├─── Aurie
     └─── Native
 ```
-* Download AurieCore.dll and AuriePatcher.exe from [here](https://github.com/AurieFramework/Aurie/releases/tag/v2.0.0b)  
+* **Download AurieCore.dll and AuriePatcher.exe from [here](https://github.com/AurieFramework/Aurie/releases/tag/v2.0.0b)**  
 Make sure you download these files from the "Aurie v2" release!
-* Download YYToolkit.dll from [here](https://github.com/AurieFramework/YYToolkit/releases/tag/v5.0.0a)  
+* **Download YYToolkit.dll from [here](https://github.com/AurieFramework/YYToolkit/releases/tag/v5.0.0a)**  
 Again, make sure it's from the "v5 open-beta, build A" release.
-* Copy AurieCore.dll into the `mods/Native` folder
-* Copy YYToolkit.dll into the `mods/Aurie` folder
-* Patch the game exe using AuriePatcher  
+* **Copy AurieCore.dll into the `mods/Native` folder**
+* **Copy YYToolkit.dll into the `mods/Aurie` folder**
+* **Patch ANTONBLAST.exe using AuriePatcher**  
 You can do it either from the command line or just launch the patcher and it'll show some dialog boxes that do the same thing.  
 If you're using the patcher the non-command line way, it should first show that you have to select the game exe, then afterwards you'd have to select the AurieCore.dll file you put in the `mods/Native` folder.  
 Once you've done that, pressing the `Install` button should patch the game.
-* Download AB-Mod.dll from the releases page [here](https://github.com/basiccube/AB-Mod/releases)
-* Copy AB-Mod.dll into the `mods/Aurie` folder
-* You should be ready to launch the game now!
+* **Download AB-Mod.dll from the releases page [here](https://github.com/basiccube/AB-Mod/releases)**
+* **Copy AB-Mod.dll into the `mods/Aurie` folder**
+* **You should be ready to launch the game now!**
 
-If everything was done correctly, you should see the debug overlay when the game opens.  
-If the game at any point gets an update, then the exe will almost certainly become unpatched. Simply rerun AuriePatcher and it should work again.
+If everything was done correctly, you should see a command prompt window appear when the game launches, and, if you pay close attention, you should also see the text `Mod successfully initialized!` in that window appear somewhere.  
+To check that the mod is working properly, open the options menu and you should see the new "Debug" page.  
+
+If you do not see the command prompt window or the new page in the options menu, make sure that you installed the mod properly and check if you did all of the steps correctly.
+
+If the game at any point gets an update, then the exe will almost certainly become unpatched. Simply redo the AuriePatcher step and it should work again.
 
 ## Build
 
 Building requires Visual Studio 2026 with the "Desktop development with C++" workload in the Visual Studio Installer selected.  
-Open the solution and then build it as usual. Preferably build using the Release x64 configuration, as I don't know if the Debug configuration will work.
+Open the solution and then build it as usual.
 
 ## Credits
 
