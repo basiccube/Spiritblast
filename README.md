@@ -1,4 +1,4 @@
-# Spiritblast
+# ![Spiritblast Logo](/assets/spiritblast.png) Spiritblast
 
 A mod for ANTONBLAST, made possible thanks to Aurie Framework and YYToolkit.
 
@@ -7,6 +7,7 @@ Currently features the following:
 * Some basic debug functionality (such as debug collision visibility)
 * Borderless fullscreen option
 * Custom room loading functionality (WIP)
+* Ability to add custom code via Lua (WIP)
 
 There are a few keys that have been added that do some sort of action:
 * **F1** - Dump global variable names to the console
@@ -14,6 +15,7 @@ There are a few keys that have been added that do some sort of action:
 * **F3** - Load custom room from testrm.json
 * **F4** - Toggle debug collision visibility
 * **F5** - Change current page in menu
+* **F6** - Run custom lua code from test.lua
 
 To be able to use these keys, you need to first enable them within the new "Debug" page in the options menu.
 
