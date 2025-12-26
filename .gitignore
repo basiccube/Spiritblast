@@ -426,7 +426,3 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
-AB-Mod/
-x64/
-x86/

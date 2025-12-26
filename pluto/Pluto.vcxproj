@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{9e471705-98e3-4df5-855c-e624805a9feb}</ProjectGuid>
+    <RootNamespace>Pluto</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>out\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>bld\$(Configuration)_$(Platform)\</IntDir>
+    <TargetName>pluto</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>out\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>bld\$(Configuration)_$(Platform)\</IntDir>
+    <TargetName>pluto</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>out\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>bld\$(Configuration)_$(Platform)\</IntDir>
+    <TargetName>pluto</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>out\$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>bld\$(Configuration)_$(Platform)\</IntDir>
+    <TargetName>pluto</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4646 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4646 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4646 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4646 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\lapi.cpp" />
+    <ClCompile Include="src\lassertlib.cpp" />
+    <ClCompile Include="src\lauxlib.cpp" />
+    <ClCompile Include="src\lbase32.cpp" />
+    <ClCompile Include="src\lbase64.cpp" />
+    <ClCompile Include="src\lbaselib.cpp" />
+    <ClCompile Include="src\lbigint.cpp" />
+    <ClCompile Include="src\lbufferlib.cpp" />
+    <ClCompile Include="src\lcanvas.cpp" />
+    <ClCompile Include="src\lcatlib.cpp" />
+    <ClCompile Include="src\lcode.cpp" />
+    <ClCompile Include="src\lcorolib.cpp" />
+    <ClCompile Include="src\lcryptolib.cpp" />
+    <ClCompile Include="src\lctype.cpp" />
+    <ClCompile Include="src\ldblib.cpp" />
+    <ClCompile Include="src\ldebug.cpp" />
+    <ClCompile Include="src\ldo.cpp" />
+    <ClCompile Include="src\ldump.cpp" />
+    <ClCompile Include="src\lffi.cpp" />
+    <ClCompile Include="src\lfunc.cpp" />
+    <ClCompile Include="src\lgc.cpp" />
+    <ClCompile Include="src\linit.cpp" />
+    <ClCompile Include="src\liolib.cpp" />
+    <ClCompile Include="src\ljson.cpp" />
+    <ClCompile Include="src\llex.cpp" />
+    <ClCompile Include="src\lmathlib.cpp" />
+    <ClCompile Include="src\lmem.cpp" />
+    <ClCompile Include="src\loadlib.cpp" />
+    <ClCompile Include="src\lobject.cpp" />
+    <ClCompile Include="src\lopcodes.cpp" />
+    <ClCompile Include="src\loslib.cpp" />
+    <ClCompile Include="src\lparser.cpp" />
+    <ClCompile Include="src\lregex.cpp" />
+    <ClCompile Include="src\lschedulerlib.cpp" />
+    <ClCompile Include="src\lstarlib.cpp" />
+    <ClCompile Include="src\lstate.cpp" />
+    <ClCompile Include="src\lstring.cpp" />
+    <ClCompile Include="src\lstrlib.cpp" />
+    <ClCompile Include="src\ltable.cpp" />
+    <ClCompile Include="src\ltablib.cpp" />
+    <ClCompile Include="src\ltm.cpp" />
+    <ClCompile Include="src\lundump.cpp" />
+    <ClCompile Include="src\lurllib.cpp" />
+    <ClCompile Include="src\lutf8lib.cpp" />
+    <ClCompile Include="src\lvector3lib.cpp" />
+    <ClCompile Include="src\lvm.cpp" />
+    <ClCompile Include="src\lxml.cpp" />
+    <ClCompile Include="src\lzio.cpp" />
+    <ClCompile Include="src\soup\adler32.cpp" />
+    <ClCompile Include="src\soup\aes.cpp" />
+    <ClCompile Include="src\soup\alloc.cpp" />
+    <ClCompile Include="src\soup\Asn1Identifier.cpp" />
+    <ClCompile Include="src\soup\Asn1Sequence.cpp" />
+    <ClCompile Include="src\soup\base.cpp" />
+    <ClCompile Include="src\soup\base32.cpp" />
+    <ClCompile Include="src\soup\base64.cpp" />
+    <ClCompile Include="src\soup\Bigint.cpp" />
+    <ClCompile Include="src\soup\Canvas.cpp" />
+    <ClCompile Include="src\soup\Capture.cpp" />
+    <ClCompile Include="src\soup\cat.cpp" />
+    <ClCompile Include="src\soup\CpuInfo.cpp" />
+    <ClCompile Include="src\soup\crc32.cpp" />
+    <ClCompile Include="src\soup\crc32c.cpp" />
+    <ClCompile Include="src\soup\Curve25519.cpp" />
+    <ClCompile Include="src\soup\DefaultRngInterface.cpp" />
+    <ClCompile Include="src\soup\deflate.cpp" />
+    <ClCompile Include="src\soup\DetachedScheduler.cpp" />
+    <ClCompile Include="src\soup\dnsHttpResolver.cpp" />
+    <ClCompile Include="src\soup\dnsName.cpp" />
+    <ClCompile Include="src\soup\dnsOsResolver.cpp" />
+    <ClCompile Include="src\soup\dnsRawResolver.cpp" />
+    <ClCompile Include="src\soup\dnsResolver.cpp" />
+    <ClCompile Include="src\soup\dnsSmartResolver.cpp" />
+    <ClCompile Include="src\soup\dnsType.cpp" />
+    <ClCompile Include="src\soup\dnsUdpResolver.cpp" />
+    <ClCompile Include="src\soup\dns_records.cpp" />
+    <ClCompile Include="src\soup\ecc.cpp" />
+    <ClCompile Include="src\soup\ffi.cpp" />
+    <ClCompile Include="src\soup\filesystem.cpp" />
+    <ClCompile Include="src\soup\HardwareRng.cpp" />
+    <ClCompile Include="src\soup\HttpRequest.cpp" />
+    <ClCompile Include="src\soup\HttpRequestTask.cpp" />
+    <ClCompile Include="src\soup\IpAddr.cpp" />
+    <ClCompile Include="src\soup\joaat.cpp" />
+    <ClCompile Include="src\soup\json.cpp" />
+    <ClCompile Include="src\soup\JsonArray.cpp" />
+    <ClCompile Include="src\soup\JsonBool.cpp" />
+    <ClCompile Include="src\soup\JsonFloat.cpp" />
+    <ClCompile Include="src\soup\JsonInt.cpp" />
+    <ClCompile Include="src\soup\JsonNode.cpp" />
+    <ClCompile Include="src\soup\JsonNull.cpp" />
+    <ClCompile Include="src\soup\JsonObject.cpp" />
+    <ClCompile Include="src\soup\JsonString.cpp" />
+    <ClCompile Include="src\soup\LangDesc.cpp" />
+    <ClCompile Include="src\soup\LexemeParser.cpp" />
+    <ClCompile Include="src\soup\log.cpp" />
+    <ClCompile Include="src\soup\memGuard.cpp" />
+    <ClCompile Include="src\soup\MimeMessage.cpp" />
+    <ClCompile Include="src\soup\Mixed.cpp" />
+    <ClCompile Include="src\soup\netConfig.cpp" />
+    <ClCompile Include="src\soup\netConnectTask.cpp" />
+    <ClCompile Include="src\soup\netStatus.cpp" />
+    <ClCompile Include="src\soup\Oid.cpp" />
+    <ClCompile Include="src\soup\os.cpp" />
+    <ClCompile Include="src\soup\ParserState.cpp" />
+    <ClCompile Include="src\soup\parse_tree.cpp" />
+    <ClCompile Include="src\soup\pem.cpp" />
+    <ClCompile Include="src\soup\Process.cpp" />
+    <ClCompile Include="src\soup\ProcessHandle.cpp" />
+    <ClCompile Include="src\soup\Promise.cpp" />
+    <ClCompile Include="src\soup\QrCode.cpp" />
+    <ClCompile Include="src\soup\rand.cpp" />
+    <ClCompile Include="src\soup\Range.cpp" />
+    <ClCompile Include="src\soup\RasterFont.cpp" />
+    <ClCompile Include="src\soup\Reader.cpp" />
+    <ClCompile Include="src\soup\Regex.cpp" />
+    <ClCompile Include="src\soup\RegexGroup.cpp" />
+    <ClCompile Include="src\soup\ResolveIpAddrTask.cpp" />
+    <ClCompile Include="src\soup\rflParser.cpp" />
+    <ClCompile Include="src\soup\Rgb.cpp" />
+    <ClCompile Include="src\soup\ripemd160.cpp" />
+    <ClCompile Include="src\soup\rsa.cpp" />
+    <ClCompile Include="src\soup\Scheduler.cpp" />
+    <ClCompile Include="src\soup\SelfDeletingThread.cpp" />
+    <ClCompile Include="src\soup\Server.cpp" />
+    <ClCompile Include="src\soup\sha1.cpp" />
+    <ClCompile Include="src\soup\sha256.cpp" />
+    <ClCompile Include="src\soup\sha384.cpp" />
+    <ClCompile Include="src\soup\sha512.cpp" />
+    <ClCompile Include="src\soup\SharedLibrary.cpp" />
+    <ClCompile Include="src\soup\Socket.cpp" />
+    <ClCompile Include="src\soup\SocketAddr.cpp" />
+    <ClCompile Include="src\soup\SocketTlsEncrypter.cpp" />
+    <ClCompile Include="src\soup\SocketTlsHandshaker.cpp" />
+    <ClCompile Include="src\soup\spaceship.cpp" />
+    <ClCompile Include="src\soup\string.cpp" />
+    <ClCompile Include="src\soup\Task.cpp" />
+    <ClCompile Include="src\soup\Thread.cpp" />
+    <ClCompile Include="src\soup\time.cpp" />
+    <ClCompile Include="src\soup\TinyPngOut.cpp" />
+    <ClCompile Include="src\soup\TrustStore.cpp" />
+    <ClCompile Include="src\soup\unicode.cpp" />
+    <ClCompile Include="src\soup\Uri.cpp" />
+    <ClCompile Include="src\soup\urlenc.cpp" />
+    <ClCompile Include="src\soup\version_compare.cpp" />
+    <ClCompile Include="src\soup\Worker.cpp" />
+    <ClCompile Include="src\soup\Writer.cpp" />
+    <ClCompile Include="src\soup\X509Certchain.cpp" />
+    <ClCompile Include="src\soup\X509Certificate.cpp" />
+    <ClCompile Include="src\soup\X509RelativeDistinguishedName.cpp" />
+    <ClCompile Include="src\soup\xml.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\lerrormessage.hpp" />
+    <ClInclude Include="src\lapi.h" />
+    <ClInclude Include="src\lauxlib.h" />
+    <ClInclude Include="src\lcode.h" />
+    <ClInclude Include="src\lcryptolib.hpp" />
+    <ClInclude Include="src\lctype.h" />
+    <ClInclude Include="src\ldebug.h" />
+    <ClInclude Include="src\ldo.h" />
+    <ClInclude Include="src\lfunc.h" />
+    <ClInclude Include="src\lgc.h" />
+    <ClInclude Include="src\ljson.hpp" />
+    <ClInclude Include="src\ljumptab.h" />
+    <ClInclude Include="src\ljumptabgcc.h" />
+    <ClInclude Include="src\llex.h" />
+    <ClInclude Include="src\llimits.h" />
+    <ClInclude Include="src\lmem.h" />
+    <ClInclude Include="src\lobject.h" />
+    <ClInclude Include="src\lopcodes.h" />
+    <ClInclude Include="src\lopnames.h" />
+    <ClInclude Include="src\lparser.h" />
+    <ClInclude Include="src\lprefix.h" />
+    <ClInclude Include="src\lstate.h" />
+    <ClInclude Include="src\lstring.h" />
+    <ClInclude Include="src\lsuggestions.hpp" />
+    <ClInclude Include="src\ltable.h" />
+    <ClInclude Include="src\ltm.h" />
+    <ClInclude Include="src\lua.h" />
+    <ClInclude Include="src\lua.hpp" />
+    <ClInclude Include="src\luaconf.h" />
+    <ClInclude Include="src\lualib.h" />
+    <ClInclude Include="src\lundump.h" />
+    <ClInclude Include="src\lvm.h" />
+    <ClInclude Include="src\lzio.h" />
+    <ClInclude Include="src\soup\adler32.hpp" />
+    <ClInclude Include="src\soup\aes.hpp" />
+    <ClInclude Include="src\soup\aes_intrin.hpp" />
+    <ClInclude Include="src\soup\alloc.hpp" />
+    <ClInclude Include="src\soup\Asn1Element.hpp" />
+    <ClInclude Include="src\soup\Asn1Identifier.hpp" />
+    <ClInclude Include="src\soup\Asn1Sequence.hpp" />
+    <ClInclude Include="src\soup\Asn1Type.hpp" />
+    <ClInclude Include="src\soup\AtomicDeque.hpp" />
+    <ClInclude Include="src\soup\base.hpp" />
+    <ClInclude Include="src\soup\base32.hpp" />
+    <ClInclude Include="src\soup\base64.hpp" />
+    <ClInclude Include="src\soup\BCanvas.hpp" />
+    <ClInclude Include="src\soup\BigBitset.hpp" />
+    <ClInclude Include="src\soup\Bigint.hpp" />
+    <ClInclude Include="src\soup\bitmask.hpp" />
+    <ClInclude Include="src\soup\Bitset.hpp" />
+    <ClInclude Include="src\soup\bitutil.hpp" />
+    <ClInclude Include="src\soup\branchless.hpp" />
+    <ClInclude Include="src\soup\Buffer.hpp" />
+    <ClInclude Include="src\soup\BufferRefWriter.hpp" />
+    <ClInclude Include="src\soup\BufferWriter.hpp" />
+    <ClInclude Include="src\soup\BuiltinOp.hpp" />
+    <ClInclude Include="src\soup\Callback.hpp" />
+    <ClInclude Include="src\soup\Canvas.hpp" />
+    <ClInclude Include="src\soup\Capture.hpp" />
+    <ClInclude Include="src\soup\cat.hpp" />
+    <ClInclude Include="src\soup\CertStore.hpp" />
+    <ClInclude Include="src\soup\CidrSubnet4.hpp" />
+    <ClInclude Include="src\soup\CidrSubnet6.hpp" />
+    <ClInclude Include="src\soup\CidrSupernet.hpp" />
+    <ClInclude Include="src\soup\console.hpp" />
+    <ClInclude Include="src\soup\ConstString.hpp" />
+    <ClInclude Include="src\soup\CpuInfo.hpp" />
+    <ClInclude Include="src\soup\crc32.hpp" />
+    <ClInclude Include="src\soup\crc32c.hpp" />
+    <ClInclude Include="src\soup\crc32_intrin.hpp" />
+    <ClInclude Include="src\soup\CryptoHashAlgo.hpp" />
+    <ClInclude Include="src\soup\Curve25519.hpp" />
+    <ClInclude Include="src\soup\DefaultRngInterface.hpp" />
+    <ClInclude Include="src\soup\deflate.hpp" />
+    <ClInclude Include="src\soup\deleter.hpp" />
+    <ClInclude Include="src\soup\DetachedScheduler.hpp" />
+    <ClInclude Include="src\soup\dnsClass.hpp" />
+    <ClInclude Include="src\soup\dnsHeader.hpp" />
+    <ClInclude Include="src\soup\dnsHttpResolver.hpp" />
+    <ClInclude Include="src\soup\dnsLookupTask.hpp" />
+    <ClInclude Include="src\soup\dnsName.hpp" />
+    <ClInclude Include="src\soup\dnsOsResolver.hpp" />
+    <ClInclude Include="src\soup\dnsQuestion.hpp" />
+    <ClInclude Include="src\soup\dnsRawResolver.hpp" />
+    <ClInclude Include="src\soup\dnsResolver.hpp" />
+    <ClInclude Include="src\soup\dnsResource.hpp" />
+    <ClInclude Include="src\soup\dnsSmartResolver.hpp" />
+    <ClInclude Include="src\soup\dnsType.hpp" />
+    <ClInclude Include="src\soup\dnsUdpResolver.hpp" />
+    <ClInclude Include="src\soup\dns_records.hpp" />
+    <ClInclude Include="src\soup\ecc.hpp" />
+    <ClInclude Include="src\soup\Endian.hpp" />
+    <ClInclude Include="src\soup\Exception.hpp" />
+    <ClInclude Include="src\soup\ffi.hpp" />
+    <ClInclude Include="src\soup\FileReader.hpp" />
+    <ClInclude Include="src\soup\filesystem.hpp" />
+    <ClInclude Include="src\soup\format.hpp" />
+    <ClInclude Include="src\soup\FormattedText.hpp" />
+    <ClInclude Include="src\soup\fwd.hpp" />
+    <ClInclude Include="src\soup\HandleBase.hpp" />
+    <ClInclude Include="src\soup\HandleRaii.hpp" />
+    <ClInclude Include="src\soup\HardwareRng.hpp" />
+    <ClInclude Include="src\soup\HttpRequest.hpp" />
+    <ClInclude Include="src\soup\HttpRequestTask.hpp" />
+    <ClInclude Include="src\soup\HttpResponse.hpp" />
+    <ClInclude Include="src\soup\IntStruct.hpp" />
+    <ClInclude Include="src\soup\IntVector.hpp" />
+    <ClInclude Include="src\soup\ioBase.hpp" />
+    <ClInclude Include="src\soup\IpAddr.hpp" />
+    <ClInclude Include="src\soup\IpGroups.hpp" />
+    <ClInclude Include="src\soup\Ipv6Maths.hpp" />
+    <ClInclude Include="src\soup\IstreamReader.hpp" />
+    <ClInclude Include="src\soup\joaat.hpp" />
+    <ClInclude Include="src\soup\json.hpp" />
+    <ClInclude Include="src\soup\JsonArray.hpp" />
+    <ClInclude Include="src\soup\JsonBool.hpp" />
+    <ClInclude Include="src\soup\JsonFloat.hpp" />
+    <ClInclude Include="src\soup\JsonInt.hpp" />
+    <ClInclude Include="src\soup\JsonNode.hpp" />
+    <ClInclude Include="src\soup\JsonNodeType.hpp" />
+    <ClInclude Include="src\soup\JsonNull.hpp" />
+    <ClInclude Include="src\soup\JsonObject.hpp" />
+    <ClInclude Include="src\soup\JsonString.hpp" />
+    <ClInclude Include="src\soup\LangDesc.hpp" />
+    <ClInclude Include="src\soup\LcgRng.hpp" />
+    <ClInclude Include="src\soup\Lexeme.hpp" />
+    <ClInclude Include="src\soup\LexemeParser.hpp" />
+    <ClInclude Include="src\soup\log.hpp" />
+    <ClInclude Include="src\soup\logSink.hpp" />
+    <ClInclude Include="src\soup\logStdSink.hpp" />
+    <ClInclude Include="src\soup\macros.hpp" />
+    <ClInclude Include="src\soup\math.hpp" />
+    <ClInclude Include="src\soup\memAllocating.hpp" />
+    <ClInclude Include="src\soup\memCAllocator.hpp" />
+    <ClInclude Include="src\soup\memGuard.hpp" />
+    <ClInclude Include="src\soup\memory.hpp" />
+    <ClInclude Include="src\soup\MemoryRefReader.hpp" />
+    <ClInclude Include="src\soup\MimeMessage.hpp" />
+    <ClInclude Include="src\soup\MimeType.hpp" />
+    <ClInclude Include="src\soup\Mixed.hpp" />
+    <ClInclude Include="src\soup\Module.hpp" />
+    <ClInclude Include="src\soup\NamedCurves.hpp" />
+    <ClInclude Include="src\soup\netConfig.hpp" />
+    <ClInclude Include="src\soup\netConnectTask.hpp" />
+    <ClInclude Include="src\soup\netReuseTag.hpp" />
+    <ClInclude Include="src\soup\netStatus.hpp" />
+    <ClInclude Include="src\soup\Notifyable.hpp" />
+    <ClInclude Include="src\soup\ObfusString.hpp" />
+    <ClInclude Include="src\soup\Oid.hpp" />
+    <ClInclude Include="src\soup\Op.hpp" />
+    <ClInclude Include="src\soup\Optional.hpp" />
+    <ClInclude Include="src\soup\os.hpp" />
+    <ClInclude Include="src\soup\OstreamWriter.hpp" />
+    <ClInclude Include="src\soup\Packet.hpp" />
+    <ClInclude Include="src\soup\ParseError.hpp" />
+    <ClInclude Include="src\soup\ParserState.hpp" />
+    <ClInclude Include="src\soup\parse_tree.hpp" />
+    <ClInclude Include="src\soup\Pattern.hpp" />
+    <ClInclude Include="src\soup\pem.hpp" />
+    <ClInclude Include="src\vendor\Soup\soup\plusaes.hpp" />
+    <ClInclude Include="src\soup\Pointer.hpp" />
+    <ClInclude Include="src\soup\PointerAndBool.hpp" />
+    <ClInclude Include="src\soup\Pointerlike.hpp" />
+    <ClInclude Include="src\soup\PoppedNode.hpp" />
+    <ClInclude Include="src\soup\PrimitiveRaii.hpp" />
+    <ClInclude Include="src\soup\Process.hpp" />
+    <ClInclude Include="src\soup\ProcessHandle.hpp" />
+    <ClInclude Include="src\soup\Promise.hpp" />
+    <ClInclude Include="src\soup\QrCode.hpp" />
+    <ClInclude Include="src\soup\rand.hpp" />
+    <ClInclude Include="src\soup\Range.hpp" />
+    <ClInclude Include="src\soup\Reader.hpp" />
+    <ClInclude Include="src\soup\RecursiveMutex.hpp" />
+    <ClInclude Include="src\soup\Regex.hpp" />
+    <ClInclude Include="src\soup\RegexAlternative.hpp" />
+    <ClInclude Include="src\soup\RegexAnyCharConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexCharConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexCodepointConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexConstraintLookbehind.hpp" />
+    <ClInclude Include="src\soup\RegexDummyConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexEndConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexExactQuantifierConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexFlags.hpp" />
+    <ClInclude Include="src\soup\RegexGroup.hpp" />
+    <ClInclude Include="src\soup\RegexGroupConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexMatchedGroup.hpp" />
+    <ClInclude Include="src\soup\RegexMatcher.hpp" />
+    <ClInclude Include="src\soup\RegexMatchResult.hpp" />
+    <ClInclude Include="src\soup\RegexNegativeLookaheadConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexNegativeLookbehindConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexOpenEndedRangeQuantifierConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexOptConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexPositiveLookaheadConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexPositiveLookbehindConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexRangeConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexRangeQuantifierConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexRecallConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexRepeatConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexStartConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexTransitionsVector.hpp" />
+    <ClInclude Include="src\soup\RegexWordBoundaryConstraint.hpp" />
+    <ClInclude Include="src\soup\RegexWordCharConstraint.hpp" />
+    <ClInclude Include="src\soup\ResolveIpAddrTask.hpp" />
+    <ClInclude Include="src\soup\rflFunc.hpp" />
+    <ClInclude Include="src\soup\rflMember.hpp" />
+    <ClInclude Include="src\soup\rflParser.hpp" />
+    <ClInclude Include="src\soup\rflStruct.hpp" />
+    <ClInclude Include="src\soup\rflType.hpp" />
+    <ClInclude Include="src\soup\rflVar.hpp" />
+    <ClInclude Include="src\soup\Rgb.hpp" />
+    <ClInclude Include="src\soup\ripemd160.hpp" />
+    <ClInclude Include="src\soup\RngInterface.hpp" />
+    <ClInclude Include="src\soup\rsa.hpp" />
+    <ClInclude Include="src\soup\Scheduler.hpp" />
+    <ClInclude Include="src\soup\scoped_enum.hpp" />
+    <ClInclude Include="src\soup\SelfDeletingThread.hpp" />
+    <ClInclude Include="src\soup\Server.hpp" />
+    <ClInclude Include="src\soup\ServerService.hpp" />
+    <ClInclude Include="src\soup\ServerServiceUdp.hpp" />
+    <ClInclude Include="src\soup\sha1.hpp" />
+    <ClInclude Include="src\soup\sha1_intrin.hpp" />
+    <ClInclude Include="src\soup\sha256.hpp" />
+    <ClInclude Include="src\soup\sha256_intrin.hpp" />
+    <ClInclude Include="src\soup\sha384.hpp" />
+    <ClInclude Include="src\soup\sha512.hpp" />
+    <ClInclude Include="src\soup\SharedLibrary.hpp" />
+    <ClInclude Include="src\soup\SharedPtr.hpp" />
+    <ClInclude Include="src\vendor\Soup\soup\shortint_impl.hpp" />
+    <ClInclude Include="src\soup\ShortString.hpp" />
+    <ClInclude Include="src\soup\signal.hpp" />
+    <ClInclude Include="src\soup\Socket.hpp" />
+    <ClInclude Include="src\soup\SocketAddr.hpp" />
+    <ClInclude Include="src\soup\SocketTlsEncrypter.hpp" />
+    <ClInclude Include="src\soup\SocketTlsHandshaker.hpp" />
+    <ClInclude Include="src\soup\spaceship.hpp" />
+    <ClInclude Include="src\soup\string.hpp" />
+    <ClInclude Include="src\soup\StringBuilder.hpp" />
+    <ClInclude Include="src\soup\stringifyable.hpp" />
+    <ClInclude Include="src\soup\StringLiteral.hpp" />
+    <ClInclude Include="src\soup\StringReader.hpp" />
+    <ClInclude Include="src\soup\StringRefWriter.hpp" />
+    <ClInclude Include="src\soup\StringWriter.hpp" />
+    <ClInclude Include="src\soup\StructMap.hpp" />
+    <ClInclude Include="src\soup\Task.hpp" />
+    <ClInclude Include="src\soup\Thread.hpp" />
+    <ClInclude Include="src\soup\time.hpp" />
+    <ClInclude Include="src\soup\TinyPngOut.hpp" />
+    <ClInclude Include="src\soup\TlsAlertDescription.hpp" />
+    <ClInclude Include="src\soup\TlsCertificate.hpp" />
+    <ClInclude Include="src\soup\TlsCipherSuite.hpp" />
+    <ClInclude Include="src\soup\TlsClientHello.hpp" />
+    <ClInclude Include="src\soup\TlsClientHelloExtEllipticCurves.hpp" />
+    <ClInclude Include="src\soup\TlsClientHelloExtServerName.hpp" />
+    <ClInclude Include="src\soup\TlsContentType.hpp" />
+    <ClInclude Include="src\soup\TlsEncryptedPreMasterSecret.hpp" />
+    <ClInclude Include="src\soup\TlsExtAlpn.hpp" />
+    <ClInclude Include="src\soup\TlsExtensionType.hpp" />
+    <ClInclude Include="src\soup\TlsHandshake.hpp" />
+    <ClInclude Include="src\soup\TlsHelloExtensions.hpp" />
+    <ClInclude Include="src\soup\TlsMac.hpp" />
+    <ClInclude Include="src\soup\TlsProtocolVersion.hpp" />
+    <ClInclude Include="src\soup\TlsRandom.hpp" />
+    <ClInclude Include="src\soup\TlsRecord.hpp" />
+    <ClInclude Include="src\soup\TlsServerHello.hpp" />
+    <ClInclude Include="src\soup\TlsServerKeyExchange.hpp" />
+    <ClInclude Include="src\soup\TlsSignatureScheme.hpp" />
+    <ClInclude Include="src\soup\Token.hpp" />
+    <ClInclude Include="src\soup\TransientToken.hpp" />
+    <ClInclude Include="src\vendor\Soup\soup\TreeNode.hpp" />
+    <ClInclude Include="src\soup\TrustStore.hpp" />
+    <ClInclude Include="src\soup\type.hpp" />
+    <ClInclude Include="src\soup\type_traits.hpp" />
+    <ClInclude Include="src\soup\unicode.hpp" />
+    <ClInclude Include="src\soup\UniquePtr.hpp" />
+    <ClInclude Include="src\soup\Uri.hpp" />
+    <ClInclude Include="src\soup\urlenc.hpp" />
+    <ClInclude Include="src\soup\utility.hpp" />
+    <ClInclude Include="src\soup\version_compare.hpp" />
+    <ClInclude Include="src\soup\VirtualHandleRaii.hpp" />
+    <ClInclude Include="src\soup\WeakRef.hpp" />
+    <ClInclude Include="src\soup\Worker.hpp" />
+    <ClInclude Include="src\soup\Writer.hpp" />
+    <ClInclude Include="src\soup\X509Certchain.hpp" />
+    <ClInclude Include="src\soup\X509Certificate.hpp" />
+    <ClInclude Include="src\soup\X509RelativeDistinguishedName.hpp" />
+    <ClInclude Include="src\soup\xml.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

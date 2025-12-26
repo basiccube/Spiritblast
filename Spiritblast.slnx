@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="spiritblast/Spiritblast.vcxproj" Id="cc62a5a2-57c3-44a4-8d20-68e199f06128" />
+  <Project Path="luacpp/luacpp.vcxproj" Id="3c5e60b0-9bcb-408b-b772-a6f5bc48f342" />
+  <Project Path="pluto/Pluto.vcxproj" Id="9e471705-98e3-4df5-855c-e624805a9feb">
+    <BuildType Solution="Debug|x64" Project="d" />
+    <Build Solution="Debug|x86" Project="false" />
+  </Project>
+</Solution>

@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ltm.cpp" />
+    <ClCompile Include="src\lundump.cpp" />
+    <ClCompile Include="src\lutf8lib.cpp" />
+    <ClCompile Include="src\lvm.cpp" />
+    <ClCompile Include="src\lzio.cpp" />
+    <ClCompile Include="src\lapi.cpp" />
+    <ClCompile Include="src\lauxlib.cpp" />
+    <ClCompile Include="src\lbaselib.cpp" />
+    <ClCompile Include="src\lcode.cpp" />
+    <ClCompile Include="src\lcorolib.cpp" />
+    <ClCompile Include="src\lctype.cpp" />
+    <ClCompile Include="src\ldblib.cpp" />
+    <ClCompile Include="src\ldebug.cpp" />
+    <ClCompile Include="src\ldo.cpp" />
+    <ClCompile Include="src\ldump.cpp" />
+    <ClCompile Include="src\lfunc.cpp" />
+    <ClCompile Include="src\lgc.cpp" />
+    <ClCompile Include="src\linit.cpp" />
+    <ClCompile Include="src\liolib.cpp" />
+    <ClCompile Include="src\llex.cpp" />
+    <ClCompile Include="src\lmathlib.cpp" />
+    <ClCompile Include="src\lmem.cpp" />
+    <ClCompile Include="src\loadlib.cpp" />
+    <ClCompile Include="src\lobject.cpp" />
+    <ClCompile Include="src\lopcodes.cpp" />
+    <ClCompile Include="src\loslib.cpp" />
+    <ClCompile Include="src\lparser.cpp" />
+    <ClCompile Include="src\lstate.cpp" />
+    <ClCompile Include="src\lstring.cpp" />
+    <ClCompile Include="src\lstrlib.cpp" />
+    <ClCompile Include="src\ltable.cpp" />
+    <ClCompile Include="src\ltablib.cpp" />
+    <ClCompile Include="src\lcryptolib.cpp" />
+    <ClCompile Include="src\lbase64.cpp" />
+    <ClCompile Include="src\lbase32.cpp" />
+    <ClCompile Include="src\ljson.cpp" />
+    <ClCompile Include="src\lassertlib.cpp" />
+    <ClCompile Include="src\lvector3lib.cpp" />
+    <ClCompile Include="src\soup\base32.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\base64.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\json.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonArray.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonBool.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonFloat.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonInt.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonNode.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonNull.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonObject.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\JsonString.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\sha256.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\spaceship.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\unicode.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\urlenc.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\version_compare.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\CpuInfo.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\base.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lurllib.cpp" />
+    <ClCompile Include="src\soup\sha1.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lstarlib.cpp" />
+    <ClCompile Include="src\lcatlib.cpp" />
+    <ClCompile Include="src\soup\cat.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\adler32.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\aes.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Asn1Identifier.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Asn1Sequence.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Bigint.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Capture.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\crc32.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Curve25519.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\deflate.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\DetachedScheduler.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dns_records.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsHttpResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsName.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsRawResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\ecc.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\HttpRequest.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\HttpRequestTask.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\IpAddr.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\joaat.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\MimeMessage.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\netConfig.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\netConnectTask.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\netStatus.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Oid.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\pem.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Promise.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\rand.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\rsa.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Scheduler.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\SelfDeletingThread.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Socket.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\SocketTlsEncrypter.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\SocketTlsHandshaker.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\string.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Task.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Thread.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\time.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\TrustStore.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Uri.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Worker.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\X509Certchain.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\X509Certificate.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\X509RelativeDistinguishedName.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\log.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lschedulerlib.cpp" />
+    <ClCompile Include="src\soup\filesystem.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsSmartResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsUdpResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lbigint.cpp" />
+    <ClCompile Include="src\soup\xml.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lxml.cpp" />
+    <ClCompile Include="src\soup\HardwareRng.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\DefaultRngInterface.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\sha384.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\sha512.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Writer.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Reader.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Server.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\alloc.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\os.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lregex.cpp" />
+    <ClCompile Include="src\soup\RegexGroup.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Regex.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lffi.cpp" />
+    <ClCompile Include="src\soup\ripemd160.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Mixed.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\parse_tree.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\ParserState.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\rflParser.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Rgb.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\SharedLibrary.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\LexemeParser.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\ffi.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\LangDesc.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lcanvas.cpp" />
+    <ClCompile Include="src\soup\Canvas.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\TinyPngOut.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\RasterFont.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\QrCode.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\ResolveIpAddrTask.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lbufferlib.cpp" />
+    <ClCompile Include="src\soup\SocketAddr.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\crc32c.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\memGuard.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Process.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\ProcessHandle.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\Range.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsOsResolver.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\soup\dnsType.cpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ltm.h" />
+    <ClInclude Include="src\lua.h" />
+    <ClInclude Include="src\lua.hpp" />
+    <ClInclude Include="src\luaconf.h" />
+    <ClInclude Include="src\lualib.h" />
+    <ClInclude Include="src\lundump.h" />
+    <ClInclude Include="src\lvm.h" />
+    <ClInclude Include="src\lzio.h" />
+    <ClInclude Include="src\lapi.h" />
+    <ClInclude Include="src\lauxlib.h" />
+    <ClInclude Include="src\lcode.h" />
+    <ClInclude Include="src\lctype.h" />
+    <ClInclude Include="src\ldebug.h" />
+    <ClInclude Include="src\ldo.h" />
+    <ClInclude Include="src\lfunc.h" />
+    <ClInclude Include="src\lgc.h" />
+    <ClInclude Include="src\ljumptabgcc.h" />
+    <ClInclude Include="src\llex.h" />
+    <ClInclude Include="src\llimits.h" />
+    <ClInclude Include="src\lmem.h" />
+    <ClInclude Include="src\lobject.h" />
+    <ClInclude Include="src\lopcodes.h" />
+    <ClInclude Include="src\lopnames.h" />
+    <ClInclude Include="src\lparser.h" />
+    <ClInclude Include="src\lprefix.h" />
+    <ClInclude Include="src\lstate.h" />
+    <ClInclude Include="src\lstring.h" />
+    <ClInclude Include="src\ltable.h" />
+    <ClInclude Include="src\ljumptab.h" />
+    <ClInclude Include="src\lcryptolib.hpp" />
+    <ClInclude Include="src\lerrormessage.hpp" />
+    <ClInclude Include="src\ljson.hpp" />
+    <ClInclude Include="src\lsuggestions.hpp" />
+    <ClInclude Include="src\soup\base.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\base32.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\base64.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\bitutil.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CryptoHashAlgo.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Endian.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Exception.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\fwd.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\IntStruct.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ioBase.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\json.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonArray.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonBool.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonFloat.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonInt.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonNode.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonNodeType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonNull.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonObject.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\JsonString.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Optional.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Reader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha256.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\spaceship.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\string.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\Soup\soup\TreeNode.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\type_traits.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\unicode.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\UniquePtr.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\urlenc.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\version_compare.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Writer.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CpuInfo.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ShortString.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha1.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\cat.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\adler32.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\aes.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Asn1Element.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Asn1Identifier.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Asn1Sequence.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Asn1Type.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\AtomicDeque.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Bigint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\bitmask.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Bitset.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\branchless.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Buffer.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\BufferRefWriter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\BufferWriter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Callback.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Capture.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CidrSubnet4.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CidrSubnet6.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CidrSupernet.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\crc32.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Curve25519.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\deflate.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\deleter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\DetachedScheduler.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dns_records.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsClass.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsHeader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsHttpResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsLookupTask.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsName.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsQuestion.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsRawResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsResource.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ecc.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\format.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HttpRequest.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HttpRequestTask.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HttpResponse.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\IntVector.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\IpAddr.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\IpGroups.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Ipv6Maths.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\IstreamReader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\joaat.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\X509RelativeDistinguishedName.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\macros.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\memory.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\MimeMessage.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\MimeType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\NamedCurves.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\netConfig.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\netConnectTask.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\netStatus.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ObfusString.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Oid.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\OstreamWriter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Packet.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\pem.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\Soup\soup\plusaes.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\PoppedNode.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\PrimitiveRaii.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Promise.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rand.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RngInterface.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rsa.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Scheduler.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\scoped_enum.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SelfDeletingThread.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SharedPtr.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\Soup\soup\shortint_impl.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\signal.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Socket.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SocketAddr.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SocketTlsEncrypter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SocketTlsHandshaker.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\stringifyable.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StringLiteral.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StringReader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StringRefWriter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StringWriter.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StructMap.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Task.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Thread.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\time.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsAlertDescription.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsCertificate.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsCipherSuite.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsClientHello.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsClientHelloExtEllipticCurves.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsClientHelloExtServerName.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsContentType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsEncryptedPreMasterSecret.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsExtensionType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsHandshake.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsHelloExtensions.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsMac.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsProtocolVersion.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsRandom.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsRecord.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsServerHello.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsServerKeyExchange.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TransientToken.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TrustStore.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\type.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Uri.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\WeakRef.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Worker.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\X509Certchain.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\X509Certificate.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\LcgRng.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\logSink.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\logStdSink.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\log.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\filesystem.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsSmartResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsUdpResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\xml.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\StringBuilder.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HardwareRng.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\DefaultRngInterface.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha384.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha512.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsSignatureScheme.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ServerServiceUdp.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Server.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ServerService.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\alloc.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\CertStore.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\os.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexFlags.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexGroup.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexGroupConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexMatchedGroup.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexMatcher.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexMatchResult.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexNegativeLookaheadConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexNegativeLookbehindConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexOpenEndedRangeQuantifierConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexOptConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexPositiveLookaheadConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexPositiveLookbehindConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexRangeConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexRangeQuantifierConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexRecallConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexRepeatConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexStartConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexWordBoundaryConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexWordCharConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Regex.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexAlternative.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexAnyCharConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexCharConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexCodepointConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexConstraintLookbehind.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexDummyConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexEndConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexExactQuantifierConstraint.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\PointerAndBool.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\BigBitset.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ripemd160.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Token.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\math.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Mixed.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Op.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\parse_tree.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ParseError.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ParserState.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RegexTransitionsVector.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflFunc.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflMember.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflParser.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflStruct.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflType.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\rflVar.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Rgb.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\SharedLibrary.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Lexeme.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\LexemeParser.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\BuiltinOp.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ConstString.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Canvas.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\FormattedText.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ffi.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\LangDesc.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\console.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TinyPngOut.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\QrCode.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\BCanvas.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ResolveIpAddrTask.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\memCAllocator.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\utility.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\MemoryRefReader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\aes_intrin.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\crc32_intrin.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha256_intrin.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\sha1_intrin.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\netReuseTag.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\crc32c.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\memGuard.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Process.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\ProcessHandle.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Module.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Range.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Pointer.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Pointerlike.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HandleRaii.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\VirtualHandleRaii.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\HandleBase.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\FileReader.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Notifyable.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\RecursiveMutex.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\memAllocating.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\TlsExtAlpn.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\Pattern.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\soup\dnsOsResolver.hpp">
+      <Filter>vendor\Soup\soup</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{b2f263e7-2d39-4d0c-8a19-3f3d2ef15195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\Soup">
+      <UniqueIdentifier>{af4e4be1-d5f9-493f-b6ba-02d33b8dc9a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\Soup\soup">
+      <UniqueIdentifier>{713ac335-27c4-4677-9da1-08c37c023a77}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

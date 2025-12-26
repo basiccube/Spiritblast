@@ -1,4 +1,4 @@
-# AB-Mod
+# Spiritblast
 
 A mod for ANTONBLAST, made possible thanks to Aurie Framework and YYToolkit.
 
@@ -42,8 +42,8 @@ Again, make sure it's from the "v5 open-beta, build A" release.
 You can do it either from the command line or just launch the patcher and it'll show some dialog boxes that do the same thing.  
 If you're using the patcher the non-command line way, it should first show that you have to select the game exe, then afterwards you'd have to select the AurieCore.dll file you put in the `mods/Native` folder.  
 Once you've done that, pressing the `Install` button should patch the game.
-* **Download AB-Mod.dll from the releases page [here](https://github.com/basiccube/AB-Mod/releases)**
-* **Copy AB-Mod.dll into the `mods/Aurie` folder**
+* **Download Spiritblast.dll from the releases page [here](https://github.com/basiccube/Spiritblast/releases)**
+* **Copy Spiritblast.dll into the `mods/Aurie` folder**
 * **You should be ready to launch the game now!**
 
 If everything was done correctly, you should see a command prompt window appear when the game launches, and, if you pay close attention, you should also see the text `Mod successfully initialized!` in that window appear somewhere.  
@@ -66,3 +66,7 @@ This wouldn't be possible without the following:
 
 Additionally, this project uses the following libraries/projects:
 * [JSON for Modern C++](https://github.com/nlohmann/json)
+* [Pluto](https://github.com/PlutoLang/Pluto)
+* [LuaCpp](https://github.com/jordanvrtanoski/luacpp)
+
+See the licenses folder for the licenses these other projects use.
