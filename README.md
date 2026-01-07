@@ -70,5 +70,6 @@ Additionally, this project uses the following libraries/projects:
 * [JSON for Modern C++](https://github.com/nlohmann/json)
 * [Pluto](https://github.com/PlutoLang/Pluto)
 * [LuaCpp](https://github.com/jordanvrtanoski/luacpp)
+* [nativefiledialog-extended](https://github.com/btzy/nativefiledialog-extended)
 
 See the licenses folder for the licenses these other projects use.

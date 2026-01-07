@@ -3,10 +3,12 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="spiritblast/Spiritblast.vcxproj" Id="cc62a5a2-57c3-44a4-8d20-68e199f06128" />
   <Project Path="luacpp/luacpp.vcxproj" Id="3c5e60b0-9bcb-408b-b772-a6f5bc48f342" />
+  <Project Path="nativefiledialog/nativefiledialog.vcxproj" Id="323098cb-e5f3-4db3-819d-4c36c4e9c3ff" />
   <Project Path="pluto/Pluto.vcxproj" Id="9e471705-98e3-4df5-855c-e624805a9feb">
     <BuildType Solution="Debug|x64" Project="d" />
     <Build Solution="Debug|x86" Project="false" />
   </Project>
+  <Project Path="spiritblast-installer/spiritblast-installer.vcxproj" Id="40f94fd2-8d7a-4fa7-b36f-c67eba8fb677" />
+  <Project Path="spiritblast/Spiritblast.vcxproj" Id="cc62a5a2-57c3-44a4-8d20-68e199f06128" />
 </Solution>
