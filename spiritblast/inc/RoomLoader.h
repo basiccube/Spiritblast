@@ -16,7 +16,7 @@ map<string, RValue> CreateStageData();
 json LoadRoomData(string path);
 
 // Goes to the room used by the room loader.
-void GoToRoomLoaderRoom();
+void GoToRoomLoaderRoom(string name);
 
 // Initializes the room loader room using the currently loaded room data.
 void InitializeRoomLoaderRoom();

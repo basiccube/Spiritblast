@@ -103,6 +103,20 @@ environment_get_username_func:
 	return returnValue;
 }
 
+static TRoutine g_roomGotoOriginal;
+
+void RoomGotoHook(RValue &result, CInstance *self, CInstance *other, int argCount, RValue *args)
+{
+	RValue rm = args[0];
+	if (g_interface->CallBuiltin("is_string", {rm}).ToBoolean())
+	{
+		GoToRoomLoaderRoom(rm.ToString());
+		return;
+	}
+
+	g_roomGotoOriginal(result, self, other, argCount, args);
+}
+
 void FrameCallback(FWFrame &frameCtx)
 {
 	UNREFERENCED_PARAMETER(frameCtx);
@@ -124,7 +138,7 @@ void FrameCallback(FWFrame &frameCtx)
 
 	RValue gotoTemplateRoom = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F3});
 	if (gotoTemplateRoom.ToBoolean())
-		GoToRoomLoaderRoom();
+		GoToRoomLoaderRoom("room");
 
 	bool prevDebugCollision = g_showDebugCollision;
 	RValue colKeyPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F4});
@@ -481,6 +495,9 @@ EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path&
 
 	// Hook into environment_get_username to override the options menu header later
 	g_envGetUsernameOriginal = CreateHook(Module, "gml_Script_environment_get_username", "environment_get_username_hook", EnvironmentGetUsernameHook);
+
+	// Hook for the room loader
+	g_roomGotoOriginal = CreateBuiltinHook(Module, "room_goto", "room_goto_hook", RoomGotoHook);
 
 	// Initialize Lua and register all Lua libraries
 	g_lua = new LuaContext();

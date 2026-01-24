@@ -54,9 +54,9 @@ json LoadRoomData(string path)
 	return data;
 }
 
-void GoToRoomLoaderRoom()
+void GoToRoomLoaderRoom(string name)
 {
-	g_roomData = LoadRoomData("room.rfrm");
+	g_roomData = LoadRoomData(name + ".rfrm");
 	if (g_roomData != nullptr)
 	{
 		int rmVersion = g_roomData["rf_roomversion"];
@@ -93,7 +93,7 @@ void InitializeRoomLoaderRoom()
 		string layName = lay["name"];
 		int layDepth = lay["depth"];
 
-		if (!g_interface->CallBuiltin("layer_exists", {RValue(layName)}))
+		if (!g_interface->CallBuiltin("layer_exists", {RValue(layName)}).ToBoolean())
 			g_interface->CallBuiltin("layer_create", {layDepth, RValue(layName)});
 
 		RValue layID = g_interface->CallBuiltin("layer_get_id", {RValue(layName)});
@@ -152,14 +152,18 @@ void InitializeRoomLoaderRoom()
 		}
 	}
 
-	RValue ob_stageManager = GetAsset("ob_stageManager");
+	RValue ob_player = GetAsset("ob_player");
+	if (!g_interface->CallBuiltin("instance_exists", {ob_player}).ToBoolean())
+	{
+		RValue ob_stageManager = GetAsset("ob_stageManager");
 
-	Print("Setting current stage data");
-	map<string, RValue> stageData = CreateStageData();
-	SetInstanceVariable(ob_stageManager, "currentStage", stageData);
+		Print("Setting current stage data");
+		map<string, RValue> stageData = CreateStageData();
+		SetInstanceVariable(ob_stageManager, "currentStage", stageData);
 
-	Print("Doing stage intro");
-	// Starts the stage intro, requires stage data first or else it crashes
-	RValue defaultStageInit = GetInstanceVariable(ob_stageManager, "defaultStageInit");
-	CallMethod(defaultStageInit);
+		Print("Doing stage intro");
+		// Starts the stage intro, requires stage data first or else it crashes
+		RValue defaultStageInit = GetInstanceVariable(ob_stageManager, "defaultStageInit");
+		CallMethod(defaultStageInit);
+	}
 }
