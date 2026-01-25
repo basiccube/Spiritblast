@@ -57,7 +57,7 @@ void DumpObjectVariables(string name)
 		Print(RValue(str));
 }
 
-static bool g_createdDebugMenu = false;
+static bool g_createdCustomLevelMenu = false;
 static bool g_createdCustomOptions = false;
 
 static bool g_debugControls = false;
@@ -245,36 +245,6 @@ void EventCallback(FWCodeEvent &eventCtx)
 
 				// End Step event
 				case 2:
-					// Create the debug menu and button.
-					// This has to happen here and not in the create event above
-					// because this needs the variables that are created in the menus create event
-					// and the custom code is executed right before the event.
-					if (event_object_name.ToString() == "ob_mainMenu" && !g_createdDebugMenu)
-					{
-						RValue menu = GetInstance("ob_mainMenu");
-						if (menu.IsUndefined())
-						{
-							Print("No main menu instance found");
-							break;
-						}
-
-						/*
-						RValue debugPage = CreateMenuPage(menu);
-						{
-							RValue mouseEnabledValue = g_interface->CallBuiltin("variable_instance_get", {menu, "mouseEnabled"});
-							CInstance *mouseToggle = CreateMenuToggle(menu, "Mouse Enabled", mouseEnabledValue, menu, "mouseEnabled");
-							AddItemToPageValue(menu, debugPage, mouseToggle);
-
-							CInstance *backBtn = CreateBackButton(menu, "Back");
-							AddItemToPageValue(menu, debugPage, backBtn);
-						}
-
-						CInstance *debugMenuBtn = CreateChangePageButton(menu, "Debug", debugPage);
-						AddItemToPage(menu, "mainPage", debugMenuBtn);
-						*/
-
-						g_createdDebugMenu = true;
-					}
 					break;
 			}
 			break;
@@ -329,7 +299,7 @@ void EventCallback(FWCodeEvent &eventCtx)
 						}
 					}
 
-					g_createdDebugMenu = false;
+					g_createdCustomLevelMenu = false;
 					g_createdCustomOptions = false;
 					break;
 			}
@@ -345,6 +315,54 @@ void EventCallback(FWCodeEvent &eventCtx)
 						DrawDebugCollisionDataBG();
 					if (g_showDebugCollision && event_object_name.ToString() == "ob_camera")
 						DrawDebugCollisionData();
+
+					// Create any custom menu options and pages here.
+					// This has to happen here and not in the create event above
+					// because this needs the variables that are created in the menus create event
+					// and the custom code is executed right before the event.
+
+					// Create the new play page, custom levels page and buttons for them.
+					if (event_object_name.ToString() == "ob_mainMenu" && !g_createdCustomLevelMenu)
+					{
+						RValue menu = GetInstance("ob_mainMenu");
+						if (menu.IsUndefined())
+						{
+							Print("No main menu instance found");
+							break;
+						}
+
+						// Adventure will be moved into a new menu page
+						CInstance *adventureBtn = GetItemOnPage(menu, "mainPage", 0);
+						DeleteItemOnPage(menu, "mainPage", 0);
+
+						RValue customLevelsPage = CreateMenuPage(menu);
+						{
+							CInstance *backBtn = CreateBackButton(menu, "Back");
+							AddItemToPageValue(customLevelsPage, backBtn);
+						}
+
+						RValue playPage = CreateMenuPage(menu);
+						{
+							CInstance *chooseText = CreateMenuText(menu, "Choose.");
+							AddItemToPageValue(playPage, chooseText);
+
+							CInstance *separatorText = CreateMenuText(menu, "");
+							AddItemToPageValue(playPage, separatorText);
+
+							AddItemToPageValue(playPage, adventureBtn);
+
+							CInstance *customLevelsBtn = CreateChangePageButton(menu, "Custom Levels", customLevelsPage);
+							AddItemToPageValue(playPage, customLevelsBtn);
+
+							CInstance *backBtn = CreateBackButton(menu, "Back");
+							AddItemToPageValue(playPage, backBtn);
+						}
+
+						CInstance *playMenuBtn = CreateChangePageButton(menu, "Play!", playPage);
+						AddItemToPage(menu, "mainPage", playMenuBtn, 0);
+
+						g_createdCustomLevelMenu = true;
+					}
 
 					// Create all of the custom options.
 					if (event_object_name.ToString() == "ob_optionsMenu")
@@ -368,18 +386,18 @@ void EventCallback(FWCodeEvent &eventCtx)
 							{
 								RValue debugOverlayValue = GetGlobalVariable("debug_overlay");
 								CInstance *debugOverlayInst = CreateMenuToggle(menu, "Debug Overlay", debugOverlayValue, globalInst, "debug_overlay");
-								AddItemToPageValue(menu, debugPage, debugOverlayInst);
+								AddItemToPageValue(debugPage, debugOverlayInst);
 
 								RValue debugControlsValue = GetGlobalVariable("debug_controls");
 								CInstance *debugControlsInst = CreateMenuToggle(menu, "Debug Controls", debugControlsValue, globalInst, "debug_controls");
-								AddItemToPageValue(menu, debugPage, debugControlsInst);
+								AddItemToPageValue(debugPage, debugControlsInst);
 
 								RValue skipSplashValue = GetGlobalVariable("skip_splash");
 								CInstance *skipSplashInst = CreateMenuToggle(menu, "Skip Splash Screens", skipSplashValue, globalInst, "skip_splash");
-								AddItemToPageValue(menu, debugPage, skipSplashInst);
+								AddItemToPageValue(debugPage, skipSplashInst);
 
 								CInstance *backBtn = CreateBackButton(menu, "Back");
-								AddItemToPageValue(menu, debugPage, backBtn);
+								AddItemToPageValue(debugPage, backBtn);
 							}
 
 							RValue pages = GetInstanceVariable(menu, "pages");
@@ -426,7 +444,7 @@ void EventCallback(FWCodeEvent &eventCtx)
 		case 12:
 			if (event_object_name.ToString() == "ob_listMenu")
 			{
-				g_createdDebugMenu = false;
+				g_createdCustomLevelMenu = false;
 				g_createdCustomOptions = false;
 
 				// Write any custom settings to the ini file

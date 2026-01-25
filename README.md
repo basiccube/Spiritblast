@@ -12,7 +12,7 @@ Currently features the following:
 There are a few keys that have been added that do some sort of action:
 * **F1** - Dump global variable names to the console
 * **F2** - Dump specified object variable names to the console
-* **F3** - Load custom room from testrm.json
+* **F3** - Load custom room from levels/room.rfrm
 * **F4** - Toggle debug collision visibility
 * **F5** - Change current page in menu
 * **F6** - Run custom lua code from test.lua

@@ -32,7 +32,7 @@ RValue CreateMenuPage(RValue menu)
 	return newPage;
 }
 
-void AddItemToPageValue(RValue menu, RValue page, CInstance *item, int index)
+void AddItemToPageValue(RValue page, CInstance *item, int index)
 {
 	if (index != -1)
 		g_interface->CallBuiltin("ds_list_insert", {page, index, item});
@@ -49,7 +49,43 @@ void AddItemToPage(RValue menu, string page, CInstance *item, int index)
 		return;
 	}
 
-	AddItemToPageValue(menu, pageVar, item, index);
+	AddItemToPageValue(pageVar, item, index);
+}
+
+CInstance *GetItemOnPageValue(RValue page, int index)
+{
+	RValue val = g_interface->CallBuiltin("ds_list_find_value", {page, index});
+	return val.ToInstance();
+}
+
+CInstance *GetItemOnPage(RValue menu, string page, int index)
+{
+	RValue pageVar = GetInstanceVariable(menu, page);
+	if (pageVar.IsUndefined())
+	{
+		Print(RValue("Invalid page specified: " + page));
+		return nullptr;
+	}
+
+	CInstance *item = GetItemOnPageValue(pageVar, index);
+	return item;
+}
+
+void DeleteItemOnPageValue(RValue page, int index)
+{
+	g_interface->CallBuiltin("ds_list_delete", {page, index});
+}
+
+void DeleteItemOnPage(RValue menu, string page, int index)
+{
+	RValue pageVar = GetInstanceVariable(menu, page);
+	if (pageVar.IsUndefined())
+	{
+		Print(RValue("Invalid page specified: " + page));
+		return;
+	}
+
+	DeleteItemOnPageValue(pageVar, index);
 }
 
 RValue CreateFakeMenuInstance(RValue menu)
@@ -64,6 +100,26 @@ RValue CreateFakeMenuInstance(RValue menu)
 	RValue fakeMenuInstance = RValue(fakeMenuInstanceMap);
 
 	return fakeMenuInstance;
+}
+
+CInstance *CreateMenuText(RValue menu, string text)
+{
+	RValue menuItem = GetAsset("menuItem");
+	if (menuItem.ToInt32() == GM_INVALID)
+		return nullptr;
+
+	RValue fakeMenuInstance = CreateFakeMenuInstance(menu);
+
+	map<string, RValue> itemMap;
+	RValue item = RValue(itemMap);
+
+	CInstance *itemInst = item.ToInstance();
+	CInstance *menuInst = fakeMenuInstance.ToInstance();
+
+	RValue res = RValue();
+	g_interface->CallBuiltinEx(res, "script_execute", itemInst, menuInst, {menuItem, RValue(text)});
+
+	return itemInst;
 }
 
 CInstance *CreateMenuButton(RValue menu, string text, RValue buttonMethod, RValue params)

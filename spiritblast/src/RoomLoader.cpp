@@ -114,7 +114,7 @@ json LoadRoomData(string path)
 
 void GoToRoomLoaderRoom(string name)
 {
-	g_roomData = LoadRoomData(name + ".rfrm");
+	g_roomData = LoadRoomData("levels/" + name + ".rfrm");
 	if (g_roomData != nullptr)
 	{
 		int rmVersion = g_roomData["rf_roomversion"];

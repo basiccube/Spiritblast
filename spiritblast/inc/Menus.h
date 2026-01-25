@@ -9,11 +9,26 @@ void ChangeMenuPage(RValue menu, string name, int addToHistory = -1);
 // Creates a menu page.
 RValue CreateMenuPage(RValue menu);
 
-// Adds a menu item to the page stored in an RValue.
-void AddItemToPageValue(RValue menu, RValue page, CInstance *item, int index = -1);
+// Adds a menu item to a page stored in an RValue.
+void AddItemToPageValue(RValue page, CInstance *item, int index = -1);
 
 // Adds a menu item to a page.
 void AddItemToPage(RValue menu, string page, CInstance *item, int index = -1);
+
+// Gets a menu item from a page stored in an RValue.
+CInstance *GetItemOnPageValue(RValue page, int index);
+
+// Gets a menu item from a page.
+CInstance *GetItemOnPage(RValue menu, string page, int index);
+
+// Deletes a menu item from a page stored in an RValue.
+void DeleteItemOnPageValue(RValue page, int index);
+
+// Deletes a menu item from a page.
+void DeleteItemOnPage(RValue menu, string page, int index);
+
+// Creates a menu item that contains text.
+CInstance *CreateMenuText(RValue menu, string text);
 
 // Creates a menu button.
 CInstance *CreateMenuButton(RValue menu, string text, RValue buttonMethod, RValue params = RValue());
