@@ -12,10 +12,9 @@ Currently features the following:
 There are a few keys that have been added that do some sort of action:
 * **F1** - Dump global variable names to the console
 * **F2** - Dump specified object variable names to the console
-* **F3** - Load custom room from levels/room.rfrm
+* **F3** - Run custom lua code from test.lua
 * **F4** - Toggle debug collision visibility
 * **F5** - Change current page in menu
-* **F6** - Run custom lua code from test.lua
 
 To be able to use these keys, you need to first enable them within the new "Debug" page in the options menu.
 
