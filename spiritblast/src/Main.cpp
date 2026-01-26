@@ -1,6 +1,7 @@
 #include "main.h"
 #include "LuaLibraries.h"
 #include "IniFile.h"
+#include "Keyboard.h"
 #include "Variables.h"
 #include "Functions.h"
 #include "Menus.h"
@@ -106,29 +107,6 @@ environment_get_username_func:
 	return returnValue;
 }
 
-static TRoutine g_roomGotoOriginal;
-
-void RoomGotoHook(RValue &result, CInstance *self, CInstance *other, int argCount, RValue *args)
-{
-	RValue rm = args[0];
-	if (g_interface->CallBuiltin("is_string", {rm}).ToBoolean())
-	{
-		GoToRoomLoaderRoom(g_levelName, rm.ToString());
-		return;
-	}
-
-	g_roomGotoOriginal(result, self, other, argCount, args);
-}
-
-void PlayCustomLevelHook(RValue &result, CInstance *self, CInstance *other, int argCount, RValue *args)
-{
-	string level = args[0].ToString();
-	Print(RValue("Playing level " + level));
-
-	ClearInstanceMap();
-	GoToRoomLoaderRoom(level, "room");
-}
-
 void FrameCallback(FWFrame &frameCtx)
 {
 	UNREFERENCED_PARAMETER(frameCtx);
@@ -136,20 +114,17 @@ void FrameCallback(FWFrame &frameCtx)
 	if (!g_debugControls)
 		return;
 
-	RValue dumpGlobalPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F1});
-	if (dumpGlobalPress.ToBoolean())
+	if (Keyboard::CheckPressed(VK_F1))
 		DumpGlobalVariables();
 
-	RValue dumpObjectPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F2});
-	if (dumpObjectPress.ToBoolean())
+	if (Keyboard::CheckPressed(VK_F2))
 	{
 		string inputString = ShowStringInputPopup("Type the name of the object you want to dump all of the variables from:", "ob_player");
 		if (inputString != "")
 			DumpObjectVariables(inputString);
 	}
 
-	RValue runLuaPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F3});
-	if (runLuaPress.ToBoolean())
+	if (Keyboard::CheckPressed(VK_F3))
 	{
 		try
 		{
@@ -163,12 +138,10 @@ void FrameCallback(FWFrame &frameCtx)
 	}
 
 	bool prevDebugCollision = g_showDebugCollision;
-	RValue colKeyPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F4});
-	if (colKeyPress.ToBoolean())
+	if (Keyboard::CheckPressed(VK_F4))
 		g_showDebugCollision = !g_showDebugCollision;
 
-	RValue changePagePress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F5});
-	if (changePagePress.ToBoolean())
+	if (Keyboard::CheckPressed(VK_F5))
 	{
 		string inputString = ShowStringInputPopup("Type the variable name of the page you want to go to:", "mainPage");
 		if (inputString != "")
@@ -271,12 +244,12 @@ void EventCallback(FWCodeEvent &eventCtx)
 
 						// Load the custom room data if we are in the template room
 						if (roomName.ToString() == "rm_template_room")
-							InitializeRoomLoaderRoom();
+							RoomLoader::InitializeRoom();
 						else if (roomName.ToString() == "rm_mainMenu")
-							ClearInstanceMap();
+							RoomLoader::ClearInstanceMap();
 						else if (roomName.ToString() == "rm_splashScreen")
 						{
-							ClearInstanceMap();
+							RoomLoader::ClearInstanceMap();
 							if (g_skipSplash)
 							{
 								RValue rm_logoDrop = GetAsset("rm_logoDrop");
@@ -551,9 +524,8 @@ EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path&
 	// Hook into environment_get_username to override the options menu header later
 	g_envGetUsernameOriginal = CreateHook(Module, "gml_Script_environment_get_username", "environment_get_username_hook", EnvironmentGetUsernameHook);
 
-	// Hooks for the room loader
-	g_roomGotoOriginal = CreateBuiltinHook(Module, "room_goto", "room_goto_hook", RoomGotoHook);
-	CreateBuiltinHook(Module, "analytics_event", "analytics_event_hook", PlayCustomLevelHook);
+	// Room loader initialization
+	RoomLoader::InitializeLoaderHooks();
 
 	// Initialize Lua and register all Lua libraries
 	g_lua = new LuaContext();

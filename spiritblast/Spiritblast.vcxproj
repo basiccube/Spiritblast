@@ -175,6 +175,7 @@
     <ClCompile Include="src\DebugCollision.cpp" />
     <ClCompile Include="src\Functions.cpp" />
     <ClCompile Include="src\IniFile.cpp" />
+    <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Lua\Lua_Interface.cpp" />
     <ClCompile Include="src\Menus.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="inc\FunctionWrapper\FunctionWrapper.hpp" />
     <ClInclude Include="inc\IniFile.h" />
     <ClInclude Include="inc\json.hpp" />
+    <ClInclude Include="inc\Keyboard.h" />
     <ClInclude Include="inc\LuaLibraries.h" />
     <ClInclude Include="inc\main.h" />
     <ClInclude Include="inc\Menus.h" />
