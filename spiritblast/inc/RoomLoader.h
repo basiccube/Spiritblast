@@ -11,6 +11,7 @@ using json = nlohmann::json;
 
 extern json g_roomData;
 extern string g_roomName;
+extern string g_levelName;
 extern map<string, vector<string>> g_roomInstanceMap;
 
 #define ROOM_VERSION 1
@@ -28,7 +29,7 @@ map<string, RValue> CreateStageData();
 json LoadRoomData(string path);
 
 // Goes to the room used by the room loader.
-void GoToRoomLoaderRoom(string name);
+void GoToRoomLoaderRoom(string level, string name);
 
 // Initializes the room loader room using the currently loaded room data.
 void InitializeRoomLoaderRoom();

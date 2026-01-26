@@ -7,8 +7,11 @@
 #include "DebugCollision.h"
 #include "RoomLoader.h"
 
+AurieModule *g_module = nullptr;
 YYTKInterface *g_interface = nullptr;
 LuaContext *g_lua = nullptr;
+
+map<string, int> g_builtinFunctions;
 
 RValue GetInstance(string name)
 {
@@ -110,11 +113,20 @@ void RoomGotoHook(RValue &result, CInstance *self, CInstance *other, int argCoun
 	RValue rm = args[0];
 	if (g_interface->CallBuiltin("is_string", {rm}).ToBoolean())
 	{
-		GoToRoomLoaderRoom(rm.ToString());
+		GoToRoomLoaderRoom(g_levelName, rm.ToString());
 		return;
 	}
 
 	g_roomGotoOriginal(result, self, other, argCount, args);
+}
+
+void PlayCustomLevelHook(RValue &result, CInstance *self, CInstance *other, int argCount, RValue *args)
+{
+	string level = args[0].ToString();
+	Print(RValue("Playing level " + level));
+
+	ClearInstanceMap();
+	GoToRoomLoaderRoom(level, "room");
 }
 
 void FrameCallback(FWFrame &frameCtx)
@@ -136,9 +148,19 @@ void FrameCallback(FWFrame &frameCtx)
 			DumpObjectVariables(inputString);
 	}
 
-	RValue gotoTemplateRoom = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F3});
-	if (gotoTemplateRoom.ToBoolean())
-		GoToRoomLoaderRoom("room");
+	RValue runLuaPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F3});
+	if (runLuaPress.ToBoolean())
+	{
+		try
+		{
+			g_lua->CompileFileAndRun("test.lua");
+		}
+		catch (runtime_error &e)
+		{
+			DbgPrintEx(LOG_SEVERITY_ERROR, "LUA ERROR: ");
+			DbgPrintEx(LOG_SEVERITY_ERROR, e.what());
+		}
+	}
 
 	bool prevDebugCollision = g_showDebugCollision;
 	RValue colKeyPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F4});
@@ -159,20 +181,6 @@ void FrameCallback(FWFrame &frameCtx)
 			}
 
 			ChangeMenuPage(menuInst, inputString);
-		}
-	}
-
-	RValue runLuaPress = g_interface->CallBuiltin("keyboard_check_pressed", {VK_F6});
-	if (runLuaPress.ToBoolean())
-	{
-		try
-		{
-			g_lua->CompileFileAndRun("test.lua");
-		}
-		catch (runtime_error &e)
-		{
-			DbgPrintEx(LOG_SEVERITY_ERROR, "LUA ERROR: ");
-			DbgPrintEx(LOG_SEVERITY_ERROR, e.what());
 		}
 	}
 }
@@ -264,6 +272,8 @@ void EventCallback(FWCodeEvent &eventCtx)
 						// Load the custom room data if we are in the template room
 						if (roomName.ToString() == "rm_template_room")
 							InitializeRoomLoaderRoom();
+						else if (roomName.ToString() == "rm_mainMenu")
+							ClearInstanceMap();
 						else if (roomName.ToString() == "rm_splashScreen")
 						{
 							ClearInstanceMap();
@@ -337,6 +347,18 @@ void EventCallback(FWCodeEvent &eventCtx)
 
 						RValue customLevelsPage = CreateMenuPage(menu);
 						{
+							RValue playCustomLevelFunc = g_interface->CallBuiltin("method", {RValue(), g_builtinFunctions["analytics_event"]});
+
+							RValue file = g_interface->CallBuiltin("file_find_first", {"levels/*", GM_FA_DIRECTORY});
+							while (file.ToString() != "")
+							{
+								CInstance *lvlBtn = CreateMenuButton(menu, file.ToString(), playCustomLevelFunc, {file});
+								AddItemToPageValue(customLevelsPage, lvlBtn);
+
+								file = g_interface->CallBuiltin("file_find_next", {});
+							}
+							g_interface->CallBuiltin("file_find_close", {});
+
 							CInstance *backBtn = CreateBackButton(menu, "Back");
 							AddItemToPageValue(customLevelsPage, backBtn);
 						}
@@ -473,6 +495,7 @@ EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path&
 
 	AurieStatus status = AURIE_SUCCESS;
 
+	g_module = Module;
 	g_interface = YYTK::GetInterface();
 	if (!g_interface)
 		return AURIE_MODULE_DEPENDENCY_NOT_RESOLVED;
@@ -515,11 +538,22 @@ EXPORTED AurieStatus ModuleInitialize(IN AurieModule* Module, IN const fs::path&
 
 	IniClose();
 
+	// Set up builtin function map
+	for (int i = 0; i < 100000; i++)
+	{
+		string funcname = g_interface->CallBuiltin("script_get_name", {i}).ToString();
+		if (funcname == "<unknown>")
+			break;
+
+		g_builtinFunctions[funcname] = i;
+	}
+
 	// Hook into environment_get_username to override the options menu header later
 	g_envGetUsernameOriginal = CreateHook(Module, "gml_Script_environment_get_username", "environment_get_username_hook", EnvironmentGetUsernameHook);
 
-	// Hook for the room loader
+	// Hooks for the room loader
 	g_roomGotoOriginal = CreateBuiltinHook(Module, "room_goto", "room_goto_hook", RoomGotoHook);
+	CreateBuiltinHook(Module, "analytics_event", "analytics_event_hook", PlayCustomLevelHook);
 
 	// Initialize Lua and register all Lua libraries
 	g_lua = new LuaContext();

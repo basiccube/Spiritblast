@@ -6,6 +6,7 @@
 
 json g_roomData;
 string g_roomName;
+string g_levelName;
 map<string, vector<string>> g_roomInstanceMap;
 
 string GetInstanceIDString(string obj, float x, float y)
@@ -17,11 +18,14 @@ string GetInstanceIDString(string obj, float x, float y)
 void ClearInstanceMap()
 {
 	Print("Clearing room loader instance map...");
+	
 	for (auto &[key, value] : g_roomInstanceMap)
 	{
 		value.clear();
 		g_roomInstanceMap.erase(key);
 	}
+
+	g_roomInstanceMap.clear();
 }
 
 void CheckInstancesInRoomList()
@@ -112,9 +116,9 @@ json LoadRoomData(string path)
 	return data;
 }
 
-void GoToRoomLoaderRoom(string name)
+void GoToRoomLoaderRoom(string level, string name)
 {
-	g_roomData = LoadRoomData("levels/" + name + ".rfrm");
+	g_roomData = LoadRoomData("levels/" + level + "/" + name + ".rfrm");
 	if (g_roomData != nullptr)
 	{
 		int rmVersion = g_roomData["rf_roomversion"];
@@ -127,6 +131,7 @@ void GoToRoomLoaderRoom(string name)
 
 		CheckInstancesInRoomList();
 		g_roomName = name;
+		g_levelName = level;
 
 		RValue templateRoom = GetAsset("rm_template_room");
 		if (templateRoom.ToInt32() != GM_INVALID)
@@ -148,7 +153,10 @@ void InitializeRoomLoaderRoom()
 {
 	bool firstTime = false;
 	if (!g_roomInstanceMap.contains(g_roomName))
+	{
+		Print(RValue("Setting up " + g_roomName + " for the first time"));
 		firstTime = true;
+	}
 
 	vector<string> &instanceList = g_roomInstanceMap[g_roomName];
 
