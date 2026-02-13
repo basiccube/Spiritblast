@@ -74,6 +74,9 @@ namespace RoomLoader
 			for (int j = 0; j < instance_count.ToInt32(); j++)
 			{
 				RValue instID = g_interface->CallBuiltin("instance_id_get", {j});
+				if (!g_interface->CallBuiltin("instance_exists", {instID}).ToBoolean())
+					continue;
+				
 				RValue object_index = GetInstanceVariable(instID, "object_index");
 
 				string name = g_interface->CallBuiltin("object_get_name", {object_index}).ToString();
@@ -285,9 +288,20 @@ namespace RoomLoader
 			SetInstanceVariable(ob_stageManager, "currentStage", stageData);
 
 			Print("Doing stage intro");
-			// Starts the stage intro, requires stage data first or else it crashes
+			
+			RValue resetStage = GetInstanceVariable(ob_stageManager, "resetStage");
+			CallMethod(resetStage);
+			
 			RValue defaultStageInit = GetInstanceVariable(ob_stageManager, "defaultStageInit");
 			CallMethod(defaultStageInit);
+			
+			RValue inReplayMode = GetInstanceVariable(ob_stageManager, "inReplayMode");
+			if (!CallMethod(inReplayMode).ToBoolean())
+			{
+				RValue ob_playerInputManager = GetAsset("ob_playerInputManager");
+				RValue startRecording = GetInstanceVariable(ob_playerInputManager, "startRecording");
+				CallMethod(startRecording);
+			}
 		}
 	}
 
